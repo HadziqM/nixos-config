@@ -2,12 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    neovim
     ripgrep
     fd
     nodejs  # For LSPs
     python3
     gcc  # Needed for Treesitter
+    xclip
   ];
 
 
