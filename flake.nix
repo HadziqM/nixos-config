@@ -4,10 +4,22 @@
   inputs = {
     # NixOS official package source, using the nixos-24.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
     rust-overlay.url = "github:oxalica/rust-overlay";
+
     flake-utils.url  = "github:numtide/flake-utils";
+
+        # stylix: A theming framework for NixOS
+    stylix.url = "github:danth/stylix";
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -21,8 +33,5 @@
         ./hosts/default.nix
       ];
     };
-
-
-
   };
 }

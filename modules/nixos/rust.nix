@@ -5,9 +5,8 @@
 
   # change this to stable if wanted to
   environment.systemPackages = [ 
-    (pkgs.rust-bin.nightly.latest.default.override {
+    (pkgs.rust-bin.nightly.latest.complete.override {
       targets = [ "wasm32-unknown-unknown" ];
-      extensions = [ "rust-src" ];  # Optional: Needed for some tooling
     })
   ];
 

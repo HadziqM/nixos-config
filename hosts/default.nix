@@ -14,7 +14,10 @@
       ../modules/nixos/network.nix
       ../modules/nixos/users.nix
       ../modules/nixos/audio.nix
+      ../modules/nixos/gnome.nix
+      ../modules/nixos/hyprland.nix
       inputs.home-manager.nixosModules.home-manager
+      inputs.stylix.nixosModules.stylix
     ];
 
 	home-manager = {
@@ -24,20 +27,6 @@
 			hadziq = import ./home-default.nix;
 		};
 	};
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -60,6 +49,8 @@
     vim
     wget
     curl
+    openssl
+    pkg-config
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-history-substring-search
