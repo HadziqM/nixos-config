@@ -7,45 +7,13 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   networking = {
-    resolvconf.enable = false;
     hostName = "nixos";
     nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ]; # Cloudflare, Google, Quad9
-    dhcpcd.extraConfig = ''
-      nohook resolv.conf
-    '';
     networkmanager = {
       insertNameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
       enable = true;
     };
   };
-
-  services.resolved = {
-    enable = true;
-    dnssec = "true";  # Enable DNSSEC for security
-    domains = [ "~." ];  # Ensure the DNS applies globally
-    extraConfig = ''
-      DNSOverHTTPS=true
-      DNSOverHTTPSServers=cloudflare-dns.com
-    '';
-  };
-
-  services.dnscrypt-proxy2.enable = true;
-  services.dnscrypt-proxy2.settings = {
-    server_names = [ "cloudflare" ];
-  };
-
-
-  networking.firewall.allowedTCPPorts = [ 9050 22 ];
-  networking.firewall.allowedUDPPorts = [ 9050 ];
-
-  services.openssh.enable = true;
-
-  services.tor.enable = true;
-  services.tor.client.enable = true;
-  # services.tor.client.extraConfig = ''
-  #   SocksPort 9050
-  #   Log notice file /var/log/tor/notices.log
-  # '';
 
   # Set your time zone.
   time.timeZone = "Asia/Jakarta";
@@ -69,7 +37,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, lib, options,  ... }:
 
 {
   imports =
@@ -35,8 +35,27 @@
   # services.xserver.libinput.enable = true;
 
   # Packages
-  programs.firefox.enable = true;
-  programs.zsh.enable = true;
+  programs = {
+    nix-ld = {
+      enable = true;
+      package = pkgs.nix-ld-rs;
+    };
+    firefox.enable = false;
+    dconf.enable = true;
+    fuse.userAllowOther = true;
+    zsh.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

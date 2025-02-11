@@ -22,15 +22,36 @@
 
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: let
+    system = "x86_64-linxu";
+  in {
     # Please replace my-nixos with your hostname
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+      inherit system;
       specialArgs = { inherit inputs; };
-      system = "x86_64-linux";
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./hosts/default.nix
+        ({
+          config,
+          pkgs,
+          ...
+        }: {
+          # Enable unfree packages globally
+          nixpkgs.config.allowUnfree = true;
+
+          # Configure the hyprpanel overlay
+          nixpkgs.overlays = [
+            hyprpanel.overlay
+          ];
+        })
+
+        # Stylix module for system-wide theming
+        inputs.stylix.nixosModules.stylix
+
+        # Home-manager module for user environment management
+        inputs.home-manager.nixosModules.default
       ];
     };
   };
