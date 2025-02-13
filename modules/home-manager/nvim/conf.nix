@@ -4,9 +4,9 @@
   home.packages = with pkgs; [
     ripgrep
     fd
-    nodejs  # For LSPs
+    nodejs # For LSPs
     python3
-    gcc  # Needed for Treesitter
+    gcc # Needed for Treesitter
     xclip
     fzf
     lazygit
@@ -21,9 +21,10 @@
   };
 
   xdg.configFile."nvim" = {
-    source = ./config;  # Adjust path
+    source = ./config; # Adjust path
     recursive = true;
   };
+
 
   home.sessionVariables = {
     EDITOR = "nvim";

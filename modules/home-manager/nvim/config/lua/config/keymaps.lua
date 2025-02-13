@@ -70,10 +70,11 @@ local M = {
     ["<C-a>"] = { "<esc>gg<S-v>G", "select all" },
     ["<C-v>"] = { "<C-o>v<S-Right>", "go to visual" },
     ["<C-S-v>"] = { "<esc>pi", "paste" },
-    ["<C-i>"] = { "<C-o>:Telescope emoji<cr>", "get emoji" },
     ["<S-Right>"] = { "<C-Right>", "move next word" },
     ["<S-Left>"] = { "<C-Left>", "move prev word" },
   },
+
+
 
   t = {
     ["<C-Right>"] = { "<C-w><Right>", "hover/change buffer right" },
