@@ -8,6 +8,8 @@
     python3
     gcc  # Needed for Treesitter
     xclip
+    fzf
+    lazygit
   ];
 
 

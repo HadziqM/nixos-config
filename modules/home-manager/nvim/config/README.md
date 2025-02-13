@@ -25,5 +25,6 @@ git clone https://github.com/HadziqM/nvchad-config $HOME/.config/nvim
 - add ignored folder in telescope section on `config/overrides.lua` if you have some folder you want to to exclude
 - run `MasonInstallAll` on nvim to install mason binaries
 - run `TSInstall rust_with_rstml` to be able to use syntax hightlighting and auto tag on rust html macro
+- download `leptosfmt` from cargo to get formatter for rust
 - Done
 ```

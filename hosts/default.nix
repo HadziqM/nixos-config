@@ -16,8 +16,10 @@
       ../modules/nixos/audio.nix
       ../modules/nixos/gnome.nix
       ../modules/nixos/hyprland.nix
+      ../modules/nixos/hyprland.nix
+      ../modules/nixos/mimetype.nix
+      ../modules/nixos/gpu-driver/amd-drivers.nix
       inputs.home-manager.nixosModules.home-manager
-      inputs.stylix.nixosModules.stylix
     ];
 
 	home-manager = {
@@ -69,10 +71,113 @@
     wget
     curl
     openssl
-    pkg-config
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-history-substring-search
+
+    # Zen Browser from custom input
+    inputs.zen-browser.packages."${system}".default
+
+
+    # File management and archives
+    yazi
+    p7zip
+    unzip
+    unrar
+    file-roller
+    ncdu
+    duf
+
+
+    # System monitoring and management
+    htop
+    btop
+    lm_sensors
+    inxi
+
+    # Network and internet tools
+    aria2
+    qbittorrent
+    cloudflare-warp
+    tailscale
+
+
+    # Audio and video
+    pulseaudio
+    pavucontrol
+    ffmpeg
+    mpv
+    deadbeef-with-plugins
+
+    # Image and graphics
+    imagemagick
+    gimp
+    hyprpicker
+    swww
+    hyprlock
+    waypaper
+    imv
+
+
+    # Productivity and office
+    obsidian
+    onlyoffice-bin
+
+
+    # System utilities
+    libgcc
+    bc
+    kdePackages.dolphin
+    lxqt.lxqt-policykit
+    libnotify
+    v4l-utils
+    ydotool
+    pciutils
+    socat
+    cowsay
+    ripgrep
+    lshw
+    bat
+    pkg-config
+    brightnessctl
+    virt-viewer
+    swappy
+    appimage-run
+    yad
+    playerctl
+    nh
+    ansible
+
+
+    # File systems
+    ntfs3g
+    os-prober
+
+    # Downloaders
+    yt-dlp
+    localsend
+
+    # Clipboard managers
+    cliphist
+
+    # Fun and customization
+    cmatrix
+    lolcat
+    fastfetch
+    onefetch
+    microfetch
+
+    # Networking
+    networkmanagerapplet
+
+    # Education
+    # ciscoPacketTracer8
+    wireshark
+    ventoy
+
+
+    # Miscellaneous
+    greetd.tuigreet
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

@@ -97,6 +97,9 @@ overrides.mason = {
     "rust-analyzer",
     "taplo", --for toml lsp
 
+    -- nix
+    "rnix-lsp",
+
     --solidity
     -- "solidity",
 
