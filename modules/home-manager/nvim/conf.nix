@@ -21,7 +21,7 @@
   };
 
   xdg.configFile."nvim" = {
-    source = ./config; # Adjust path
+    source = ../../../dotfiles/.config/nvim; # Adjust path
     recursive = true;
   };
 

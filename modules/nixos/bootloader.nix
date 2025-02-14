@@ -18,7 +18,7 @@
         efiSupport = true;
         #efiInstallAsRemovable = true; # Uncomment if needed
         device = "nodev"; # EFI systems don't use a physical device
-        useOSProber = false; # Detects other OSes like Windows
+        useOSProber = true; # Detects other OSes like Windows
         configurationLimit = 10; # Keep only 5 boot generations
       };
     };

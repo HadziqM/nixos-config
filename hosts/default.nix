@@ -19,6 +19,7 @@
       ../modules/nixos/hyprland.nix
       ../modules/nixos/hyprland.nix
       ../modules/nixos/mimetype.nix
+      ../modules/nixos/wireguard.nix
       ../modules/nixos/gpu-driver/amd-drivers.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -116,14 +117,57 @@
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
-    git
     vim
-    wget
     curl
-    openssl
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-history-substring-search
+
+
+    # Text editors and IDEs
+    nano
+    vscode
+    zed-editor
+    jetbrains.idea-ultimate
+
+    # Programming languages and tools
+    lua
+    python3
+    python3Packages.pip
+    clang
+    nodePackages_latest.yarn
+    gcc
+    openssl
+
+    # Frappe Bench
+    redis
+
+    # Version control and development tools
+    git
+    gh
+    lazygit
+    bruno
+    postman
+    bruno-cli
+    gnumake
+    coreutils
+    nixfmt-rfc-style
+    meson
+    ninja
+
+    # Shell and terminal utilities
+    stow
+    wget
+    killall
+    eza
+    starship
+    kitty
+    zoxide
+    fzf
+    tmux
+    progress
+    tree
+    exfatprogs
 
     # Zen Browser from custom input
     inputs.zen-browser.packages."${system}".default
