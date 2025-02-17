@@ -22,11 +22,20 @@
 
     Akari.url = "github:HadziqM/Akari";
 
+    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+
   };
 
-  outputs = { self, nixpkgs, hyprpanel, stylix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      hyprpanel,
+      stylix,
+      ...
+    }@inputs:
     let
-      system = "x86_64-linxu";
+      system = "x86_64-linux";
     in
     {
       # Please replace my-nixos with your hostname
@@ -37,21 +46,28 @@
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/default.nix
-          ({ config
-           , pkgs
-           , ...
-           }: {
-            # Enable unfree packages globally
-            nixpkgs.config.allowUnfree = true;
+          (
+            {
+              config,
+              pkgs,
+              ...
+            }:
+            {
+              # Enable unfree packages globally
+              nixpkgs.config.allowUnfree = true;
 
-            # Configure the hyprpanel overlay
-            nixpkgs.overlays = [
-              hyprpanel.overlay
-            ];
-          })
+              # Configure the hyprpanel overlay
+              nixpkgs.overlays = [
+                hyprpanel.overlay
+              ];
+            }
+          )
 
           # Stylix module for system-wide theming
           inputs.stylix.nixosModules.stylix
+
+          # Grub customizer
+          inputs.distro-grub-themes.nixosModules.${system}.default
 
           # Home-manager module for user environment management
           inputs.home-manager.nixosModules.default

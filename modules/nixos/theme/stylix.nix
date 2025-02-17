@@ -1,7 +1,8 @@
-{ inputs, config, pkgs, lib, options,  ... }:
+{ pkgs, lib, ... }:
 {
   stylix = {
     enable = true;
+    image = ../../../config/assets/wall.png;
     base16Scheme = {
       base00 = "191724";
       base01 = "1f1d2e";
@@ -20,15 +21,17 @@
       base0E = "f6c177";
       base0F = "524f67";
     };
-    image = ../../../config/assets/wall.png;
     polarity = "dark";
     opacity.terminal = 0.8;
-    cursor.package = pkgs.bibata-cursors;
-    cursor.name = "Bibata-Modern-Ice";
-    cursor.size = 24;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+    targets.qt.platform = lib.mkForce "qtct";
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
