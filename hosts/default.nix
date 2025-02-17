@@ -2,27 +2,31 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, lib, options, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-      ../modules/nixos/fonts.nix
-      ../modules/nixos/rust.nix
-      ../modules/nixos/bootloader.nix
-      ../modules/nixos/network.nix
-      ../modules/nixos/users.nix
-      ../modules/nixos/audio.nix
-      ../modules/nixos/gnome.nix
-      ../modules/nixos/hyprland.nix
-      ../modules/nixos/hyprland.nix
-      ../modules/nixos/mimetype.nix
-      ../modules/nixos/wireguard.nix
-      ../modules/nixos/gpu-driver/amd-drivers.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+    ../modules/nixos/fonts.nix
+    ../modules/nixos/rust.nix
+    ../modules/nixos/bootloader.nix
+    ../modules/nixos/network.nix
+    ../modules/nixos/users.nix
+    ../modules/nixos/audio.nix
+    ../modules/nixos/gnome.nix
+    ../modules/nixos/hyprland.nix
+    ../modules/nixos/hyprland.nix
+    ../modules/nixos/mimetype.nix
+    ../modules/nixos/wireguard.nix
+    ../modules/nixos/gpu-driver/amd-drivers.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -32,8 +36,41 @@
     };
   };
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-
+  services = {
+    cloudflare-warp.enable = true;
+    cron = {
+      enable = true;
+    };
+    libinput.enable = true;
+    fstrim.enable = true;
+    openssh.enable = true;
+    printing = {
+      enable = true;
+      drivers = [ pkgs.hplipWithPlugin ];
+    };
+    power-profiles-daemon.enable = false;
+    thermald.enable = true;
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+    gnome.gnome-keyring.enable = true;
+    # avahi = {
+    #   enable = true;
+    #   nssmdns4 = true;
+    #   openFirewall = true;
+    # };
+    # ipp-usb.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -84,13 +121,15 @@
     };
     polarity = "dark";
     opacity.terminal = 0.8;
-    cursor.package = pkgs.bibata-cursors;
-    cursor.name = "Bibata-Modern-Ice";
-    cursor.size = 24;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
     targets.qt.platform = lib.mkForce "qtct";
     fonts = {
       monospace = {
-        package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
@@ -113,7 +152,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
@@ -123,18 +165,13 @@
     zsh-autosuggestions
     zsh-history-substring-search
 
-
     # Text editors and IDEs
     nano
-    vscode
-    zed-editor
-    jetbrains.idea-ultimate
 
     # Programming languages and tools
     lua
     python3
     python3Packages.pip
-    clang
     nodePackages_latest.yarn
     gcc
     openssl
@@ -146,13 +183,7 @@
     git
     gh
     lazygit
-    bruno
-    postman
-    bruno-cli
-    gnumake
     coreutils
-    nixfmt-rfc-style
-    meson
     ninja
 
     # Shell and terminal utilities
@@ -162,7 +193,6 @@
     eza
     starship
     kitty
-    zoxide
     fzf
     tmux
     progress
@@ -172,29 +202,20 @@
     # Zen Browser from custom input
     inputs.zen-browser.packages."${system}".default
 
-
     # File management and archives
     yazi
     p7zip
     unzip
     unrar
-    file-roller
-    ncdu
-    duf
-
 
     # System monitoring and management
     htop
     btop
-    lm_sensors
-    inxi
 
     # Network and internet tools
     aria2
     qbittorrent
     cloudflare-warp
-    tailscale
-
 
     # Audio and video
     pulseaudio
@@ -205,43 +226,35 @@
 
     # Image and graphics
     imagemagick
-    gimp
     hyprpicker
     swww
     hyprlock
     waypaper
     imv
 
-
     # Productivity and office
     obsidian
     onlyoffice-bin
 
-
     # System utilities
     libgcc
     bc
-    kdePackages.dolphin
     lxqt.lxqt-policykit
     libnotify
     v4l-utils
     ydotool
     pciutils
-    socat
-    cowsay
     ripgrep
     lshw
     bat
     pkg-config
     brightnessctl
-    virt-viewer
     swappy
     appimage-run
     yad
     playerctl
     nh
     ansible
-
 
     # File systems
     ntfs3g
@@ -258,7 +271,6 @@
     cmatrix
     lolcat
     fastfetch
-    onefetch
     microfetch
 
     # Networking
@@ -266,12 +278,7 @@
 
     # Education
     # ciscoPacketTracer8
-    wireshark
     ventoy
-
-
-    # Miscellaneous
-    greetd.tuigreet
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

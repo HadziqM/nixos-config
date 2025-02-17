@@ -20,6 +20,8 @@
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
+    Akari.url = "github:HadziqM/Akari";
+
   };
 
   outputs = { self, nixpkgs, hyprpanel, stylix, ... }@inputs:

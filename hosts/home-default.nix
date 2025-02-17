@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 {
 
   imports = [
@@ -41,7 +41,7 @@
     ".config/yazi".source = ../dotfiles/.config/yazi;
     ".config/wezterm".source = ../dotfiles/.config/wezterm;
     ".config/zsh".source = ../dotfiles/.config/zsh;
-    ".config/nvim".source = ../dotfiles/.config/nvim;
+    # ".config/nvim".source = ../dotfiles/.config/nvim;
 
     # Individual config files
     ".config/kwalletrc".source = ../dotfiles/.config/kwalletrc;
@@ -89,25 +89,20 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    ripgrep
-    fd
-    nodejs # For LSPs
-    python3
-    gcc # Needed for Treesitter
     xclip
-    fzf
     lazygit
     spotify
     legcord
     (import ../scripts/rofi-launcher.nix { inherit pkgs; })
+    inputs.Akari.packages.${system}.default
   ];
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   defaultEditor = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  # };
 
   stylix.targets.waybar.enable = false;
 

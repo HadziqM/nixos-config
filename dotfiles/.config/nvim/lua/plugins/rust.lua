@@ -23,6 +23,9 @@ local M = {
         default_settings = {
           -- rust-analyzer language server configuration
           ["rust-analyzer"] = {
+            check = {
+              command = "clippy",
+            },
             cargo = {
               loadOutDirsFromCheck = true,
               buildScripts = {
