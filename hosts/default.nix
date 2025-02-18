@@ -7,7 +7,9 @@
   pkgs,
   ...
 }:
-
+let
+  conf = builtins.fromJSON (builtins.readFile ../setting.json);
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -19,7 +21,7 @@
     ../modules/nixos/users.nix
     ../modules/nixos/audio.nix
     ../modules/nixos/gnome.nix
-    ../modules/nixos/hyprland.nix
+    # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
     ../modules/nixos/wireguard.nix
@@ -33,7 +35,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      hadziq = import ./home-default.nix;
+      ${conf.user} = import ./home-default.nix;
     };
   };
   # Enable CUPS to print documents.
@@ -102,6 +104,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # install waydroid
+  virtualisation.waydroid.enable = true;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -117,6 +122,7 @@
 
     # Text editors and IDEs
     nano
+    neovide
 
     # Programming languages and tools
     lua
@@ -176,10 +182,6 @@
 
     # Image and graphics
     imagemagick
-    hyprpicker
-    swww
-    hyprlock
-    waypaper
     imv
 
     # Productivity and office
@@ -211,7 +213,6 @@
     os-prober
 
     # Downloaders
-    yt-dlp
     localsend
 
     # Clipboard managers
@@ -219,7 +220,6 @@
 
     # Fun and customization
     cmatrix
-    lolcat
     fastfetch
     microfetch
 

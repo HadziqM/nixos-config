@@ -8,7 +8,6 @@
     xwayland.enable = true;
   };
 
-
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -37,10 +36,14 @@
     grim
     slurp
     waybar
-    hyprpanel
+    # hyprpanel
     dunst
     wl-clipboard
     swaynotificationcenter
+
+    hyprpicker
+    swww
+    hyprlock
+    waypaper
   ];
 }
-

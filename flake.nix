@@ -18,7 +18,7 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     Akari.url = "github:HadziqM/Akari";
 
@@ -28,10 +28,8 @@
 
   outputs =
     {
-      self,
       nixpkgs,
-      hyprpanel,
-      stylix,
+      # hyprpanel,
       ...
     }@inputs:
     let
@@ -46,23 +44,15 @@
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./hosts/default.nix
-          (
-            {
-              config,
-              pkgs,
-              ...
-            }:
-            {
-              # Enable unfree packages globally
-              nixpkgs.config.allowUnfree = true;
+          {
+            # Enable unfree packages globally
+            nixpkgs.config.allowUnfree = true;
 
-              # Configure the hyprpanel overlay
-              nixpkgs.overlays = [
-                hyprpanel.overlay
-              ];
-            }
-          )
-
+            # Configure the hyprpanel overlay
+            # nixpkgs.overlays = [
+            #   hyprpanel.overlay
+            # ];
+          }
           # Stylix module for system-wide theming
           inputs.stylix.nixosModules.stylix
 
