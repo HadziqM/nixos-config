@@ -18,8 +18,6 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    # hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-
     Akari.url = "github:HadziqM/Akari";
 
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
@@ -29,7 +27,6 @@
   outputs =
     {
       nixpkgs,
-      # hyprpanel,
       ...
     }@inputs:
     let

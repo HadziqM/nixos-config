@@ -123,3 +123,6 @@ alias ll='eza --icons=always --color=always -la'
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
+
+# use direnv
+eval "$(direnv hook zsh)"

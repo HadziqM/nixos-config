@@ -1,10 +1,12 @@
-{ config, pkgs, ... }:
-
+let
+  conf = builtins.fromJSON (builtins.readFile ../setting.json);
+in
 {
   programs.git = {
     enable = true;
-    userName  = "HadziqM";
-    userEmail = "dimascrazz@gmail.com";
+    userName = conf.github.username;
+    userEmail = conf.github.email;
+    defaultBranch = "main";
     aliases = {
       ci = "commit";
       co = "checkout";
@@ -12,4 +14,3 @@
     };
   };
 }
-

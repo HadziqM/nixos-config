@@ -9,53 +9,24 @@ in
 {
 
   imports = [
-    # ../modules/home-manager/git.nix
-    # ../modules/home-manager/nvim/conf.nix
-    # ../modules/home-manager/zsh/conf.nix
-    # ../modules/home-manager/tmux/conf.nix
-    # ../config/wlogout.nix
-    # ../config/rofi/rofi.nix
+    ../modules/home-manager/direnv.nix
+    ../modules/home-manager/zsh.nix
+    ../modules/home-manager/git.nix
   ];
 
   home = {
     username = "${conf.user}";
     homeDirectory = "/home/${conf.user}";
     file = {
-      # Hyprland Config
-      ".config/hypr".source = ../dotfiles/.config/hypr;
-      # wlogout icons
-      ".config/wlogout/icons".source = ../config/wlogout;
-
       # Top Level Files symlinks
-      ".zshrc".source = ../dotfiles/.zshrc;
-      ".gitconfig".source = ../dotfiles/.gitconfig;
       ".ideavimrc".source = ../dotfiles/.ideavimrc;
-      ".nirc".source = ../dotfiles/.nirc;
-      ".local/bin/wallpaper".source = ../dotfiles/.local/bin/wallpaper;
 
       # Config directories
-      ".config/dunst".source = ../dotfiles/.config/dunst;
       ".config/fastfetch".source = ../dotfiles/.config/fastfetch;
       ".config/kitty".source = ../dotfiles/.config/kitty;
-      ".config/mpv".source = ../dotfiles/.config/mpv;
       ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
-      ".config/waybar".source = ../dotfiles/.config/waybar;
       ".config/yazi".source = ../dotfiles/.config/yazi;
-      ".config/wezterm".source = ../dotfiles/.config/wezterm;
       ".config/zsh".source = ../dotfiles/.config/zsh;
-      # ".config/nvim".source = ../dotfiles/.config/nvim;
-
-      # Individual config files
-      ".config/kwalletrc".source = ../dotfiles/.config/kwalletrc;
-      ".config/starship.toml".source = ../dotfiles/.config/starship.toml;
-
-      # zsh plugins
-      ".local/share/zsh/plugins/zsh-autosuggestions".source =
-        "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
-      ".local/share/zsh/plugins/zsh-syntax-highlighting".source =
-        "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting";
-      ".local/share/zsh/plugins/zsh-history-substring-search".source =
-        "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
     };
     sessionVariables = {
       # Default applications
@@ -74,12 +45,6 @@ in
       # Path modifications - now as a string
       # PATH = "$HOME/.local/bin:$HOME/go/bin:$PATH";
 
-      # Wayland and Hyprland specific
-      JAVA_AWT_WM_NOREPARENTING = 1;
-      XDG_SESSION_TYPE = "wayland";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-
       # Localization
       LC_ALL = "en_US.UTF-8";
     };
@@ -91,18 +56,13 @@ in
     packages = with pkgs; [
       xclip
       lazygit
-      spotify
       legcord
-      (import ../scripts/rofi-launcher.nix { inherit pkgs; })
+      # my NixVim configuration
       inputs.Akari.packages.${system}.default
     ];
   };
 
-  programs.bash.enable = true;
-
   nixpkgs.config.allowUnfree = true;
-
-  stylix.targets.waybar.enable = false;
 
   gtk = {
     iconTheme = {

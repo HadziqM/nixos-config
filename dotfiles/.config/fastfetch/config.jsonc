@@ -46,7 +46,7 @@
         {
             "type": "wm",
             "key": " ",
-            "keyColor": "34",
+            "keyColor": "34"
         },
         // {
         //     "type": "cursor",
@@ -61,7 +61,7 @@
         {
             "type": "uptime",
             "key": " ",
-            "keyColor": "34",
+            "keyColor": "34"
         },
         {
             "type": "command",
@@ -78,7 +78,7 @@
         {
             "type": "media",
             "key": "󰝚 ",
-            "keyColor": "34",
+            "keyColor": "34"
         },
         // "break",
         "break",
@@ -103,6 +103,6 @@
             "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
         },
         "break",
-        "break",
+        "break"
     ]
 }

@@ -21,6 +21,7 @@ in
     ../modules/nixos/users.nix
     ../modules/nixos/audio.nix
     ../modules/nixos/gnome.nix
+    ../modules/nixos/podman.nix
     # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
