@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -8,10 +13,17 @@
 
   networking = {
     hostName = "nixos";
-    nameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ]; # Cloudflare, Google, Quad9
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+      "9.9.9.9"
+    ]; # Cloudflare, Google, Quad9
+    # If using dhcpcd:
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    # If using NetworkManager:
     networkmanager = {
-      insertNameservers = [ "1.1.1.1" "8.8.8.8" "9.9.9.9" ];
       enable = true;
+      dns = "none";
     };
   };
 

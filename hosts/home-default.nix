@@ -26,7 +26,6 @@ in
       ".config/kitty".source = ../dotfiles/.config/kitty;
       ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
       ".config/yazi".source = ../dotfiles/.config/yazi;
-      ".config/zsh".source = ../dotfiles/.config/zsh;
     };
     sessionVariables = {
       # Default applications
@@ -59,15 +58,20 @@ in
       legcord
       # my NixVim configuration
       inputs.Akari.packages.${system}.default
+      spotify
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
 
   gtk = {
+    theme = {
+      name = "Cyberpunk Neon";
+      package = pkgs.cyberpunk-neon;
+    };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Candy Icons";
+      package = pkgs.candy-icons;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;

@@ -29,6 +29,7 @@ in
     ../modules/nixos/gpu-driver/amd-drivers.nix
     ../modules/nixos/theme/stylix.nix
     ../modules/nixos/theme/grub-themes.nix
+    ../modules/nixos/theme/sddm.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -39,8 +40,30 @@ in
       ${conf.user} = import ./home-default.nix;
     };
   };
+
   # Enable CUPS to print documents.
   services = {
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        inherit (conf) user;
+      };
+      defaultSession = "gnome";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+    };
+    # xserver = {
+    #   enable = true;
+    #   displayManager = {
+    #     gdm = {
+    #       enable = true;
+    #       wayland = true;
+    #     };
+    #   };
+    # };
+
     cloudflare-warp.enable = true;
     cron = {
       enable = true;

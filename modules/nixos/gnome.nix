@@ -1,21 +1,10 @@
 { pkgs, ... }:
 
 {
-  # Enable the X11 windowing system.
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
+  services.xserver.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    gnome-tweaks
-    gnome-music
     gnome-logs
     gnomeExtensions.gsconnect
     gnomeExtensions.caffeine

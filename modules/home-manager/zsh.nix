@@ -7,7 +7,7 @@
   ];
 
   home.file = {
-    ".zshrc".source = ../../dotfiles/.config/.zshrc;
+    ".zshrc".source = ../../dotfiles/.zshrc;
     ".local/share/zsh/plugins/zsh-autosuggestions".source =
       "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
     ".local/share/zsh/plugins/zsh-syntax-highlighting".source =
