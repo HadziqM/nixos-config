@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 let
@@ -65,10 +66,10 @@ in
   nixpkgs.config.allowUnfree = true;
 
   gtk = {
-    theme = {
-      name = "Cyberpunk Neon";
-      package = pkgs.cyberpunk-neon;
-    };
+    # theme = {
+    #   name = lib.mkForce "Cyberpunk Neon";
+    #   package = lib.mkForce pkgs.cyberpunk-neon.gtk;
+    # };
     iconTheme = {
       name = "Candy Icons";
       package = pkgs.candy-icons;

@@ -1,11 +1,4 @@
 {
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-
-{
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -14,6 +7,7 @@
   networking = {
     hostName = "nixos";
     nameservers = [
+      "127.0.0.1"
       "1.1.1.1"
       "8.8.8.8"
       "9.9.9.9"

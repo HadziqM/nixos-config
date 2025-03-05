@@ -24,15 +24,15 @@
     polarity = "dark";
     opacity.terminal = 0.8;
     cursor = {
-      package = pkgs.breeze-hacked-cursor-theme;
-      name = "Breeze Hacked cursor theme";
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
       size = 24;
     };
     targets.qt.platform = lib.mkForce "qtct";
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "FiraCode";
+        package = pkgs.nerd-fonts.fira-mono;
+        name = "Fira Mono";
       };
       sansSerif = {
         package = pkgs.montserrat;
@@ -49,6 +49,5 @@
         popups = 12;
       };
     };
-
   };
 }

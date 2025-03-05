@@ -3,6 +3,7 @@
 {
   fonts = {
     packages = with pkgs; [
+      pkgs.nerd-fonts.jetbrains-mono
       noto-fonts-emoji
       fira-sans
       roboto

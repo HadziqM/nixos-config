@@ -22,6 +22,8 @@ in
     ../modules/nixos/audio.nix
     ../modules/nixos/gnome.nix
     ../modules/nixos/podman.nix
+    ../modules/nixos/secure-dns.nix
+    ../modules/nixos/flatpak.nix
     # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
@@ -30,6 +32,7 @@ in
     ../modules/nixos/theme/stylix.nix
     ../modules/nixos/theme/grub-themes.nix
     ../modules/nixos/theme/sddm.nix
+    ../modules/nixos/game/amd-game.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -54,17 +57,7 @@ in
         wayland.enable = true;
       };
     };
-    # xserver = {
-    #   enable = true;
-    #   displayManager = {
-    #     gdm = {
-    #       enable = true;
-    #       wayland = true;
-    #     };
-    #   };
-    # };
 
-    cloudflare-warp.enable = true;
     cron = {
       enable = true;
     };
@@ -146,25 +139,21 @@ in
 
     # Text editors and IDEs
     nano
-    neovide
 
     # Programming languages and tools
     lua
     python3
     python3Packages.pip
     nodePackages_latest.yarn
-    gcc
+    # gcc
+    # ninja
     openssl
-
-    # Frappe Bench
-    redis
 
     # Version control and development tools
     git
     gh
     lazygit
     coreutils
-    ninja
 
     # Shell and terminal utilities
     stow
@@ -195,14 +184,11 @@ in
     # Network and internet tools
     aria2
     qbittorrent
-    cloudflare-warp
 
     # Audio and video
     pulseaudio
     pavucontrol
-    ffmpeg
     mpv
-    deadbeef-with-plugins
 
     # Image and graphics
     imagemagick
@@ -249,9 +235,7 @@ in
 
     # Networking
     networkmanagerapplet
-
-    # Education
-    # ciscoPacketTracer8
+    dig
     ventoy
   ];
   # Set the default editor to vim
