@@ -194,10 +194,6 @@ in
     imagemagick
     imv
 
-    # Productivity and office
-    obsidian
-    onlyoffice-bin
-
     # System utilities
     libgcc
     bc
@@ -237,6 +233,7 @@ in
     networkmanagerapplet
     dig
     ventoy
+    remmina
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

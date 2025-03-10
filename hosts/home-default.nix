@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }:
 let
@@ -10,9 +9,11 @@ in
 {
 
   imports = [
+    inputs.spicetify-nix.homeManagerModules.default
     ../modules/home-manager/direnv.nix
     ../modules/home-manager/zsh.nix
     ../modules/home-manager/git.nix
+    ../modules/home-manager/spotify.nix
   ];
 
   home = {
@@ -59,7 +60,6 @@ in
       legcord
       # my NixVim configuration
       inputs.Akari.packages.${system}.default
-      spotify
     ];
   };
 
