@@ -28,7 +28,7 @@ in
     # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
-    ../modules/nixos/wireguard.nix
+    ../modules/nixos/android-dev.nix
     ../modules/nixos/gpu-driver/amd-drivers.nix
     ../modules/nixos/theme/stylix.nix
     ../modules/nixos/theme/grub-themes.nix
@@ -49,7 +49,7 @@ in
   services = {
     displayManager = {
       autoLogin = {
-        enable = true;
+        enable = false;
         inherit (conf) user;
       };
       defaultSession = "gnome";
@@ -58,6 +58,10 @@ in
         wayland.enable = true;
       };
     };
+    # xserver.displayManager.gdm = {
+    #   enable = true;
+    #   wayland = true;
+    # };
 
     cron = {
       enable = true;

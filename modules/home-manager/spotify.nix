@@ -23,7 +23,6 @@
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
-        ncsVisualizer
         localFiles
       ];
       enabledSnippets = with spicePkgs.snippets; [
@@ -31,6 +30,6 @@
         pointer
       ];
 
-      theme = lib.mkForce spicePkgs.themes.text;
+      # theme = lib.mkForce spicePkgs.themes.dreary;
     };
 }
