@@ -6,9 +6,6 @@
 }:
 
 {
-  # home.packages = with pkgs; [
-  #   spotify
-  # ];
 
   programs.spicetify =
     let

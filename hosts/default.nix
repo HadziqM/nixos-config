@@ -24,6 +24,7 @@ in
     ../modules/nixos/podman.nix
     ../modules/nixos/secure-dns.nix
     ../modules/nixos/flatpak.nix
+    ../modules/nixos/tailscale.nix
     # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
