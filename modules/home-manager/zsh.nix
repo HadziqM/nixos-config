@@ -4,7 +4,12 @@
   home.packages = with pkgs; [
     bat
     eza
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-history-substring-search
   ];
+
+  programs.zsh.enable = true;
 
   home.file = {
     ".zshrc".source = ../../dotfiles/.zshrc;

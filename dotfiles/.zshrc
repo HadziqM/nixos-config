@@ -17,6 +17,35 @@ if [ -d "$HOME/.cargo/bin" ] ;
   then PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+# Distrobox for android dev
+if [[ -n $DISTROBOX_ENTER_PATH ]]; then
+  if [[ -d "$HOME/Android" ]]; then
+    export ANDROID_SDK_ROOT="$HOME/Android"
+    export ANDROID_HOME="$ANDROID_SDK_ROOT"
+    export PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH
+    export ANDROID_AVD_HOME=$HOME/.config/.android/avd
+
+    if [[ -d "$ANDROID_SDK_ROOT/ndk/25.2.9519653" ]]; then
+      export ANDROID_NDK_HOME="$HOME/Android/ndk/25.2.9519653"
+      export PATH="$ANDROID_NDK_HOME:$PATH"
+      export ANDROID_NDK_ROOT=$ANDROID_NDK_HOME
+    fi
+
+    if [[ -d "$ANDROID_SDK_ROOT/platform-tools" ]]; then
+      export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH
+    fi
+
+    if [[ -d "$ANDROID_SDK_ROOT/emulator" ]]; then
+      export PATH=$ANDROID_SDK_ROOT/emulator:$PATH
+    fi
+
+    if [[ -d "$ANDROID_SDK_ROOT/cmake/3.22.1" ]]; then
+      export PATH="$ANDROID_SDK_ROOT/cmake/3.22.1/bin:$PATH"
+    fi
+
+  fi
+fi
+
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
 #  │  │ │├─┤ ││  ├┤ ││││ ┬││││├┤
 #  ┴─┘└─┘┴ ┴─┴┘  └─┘┘└┘└─┘┴┘└┘└─┘

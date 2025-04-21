@@ -5,6 +5,7 @@
 }:
 let
   conf = builtins.fromJSON (builtins.readFile ../setting.json);
+  inherit (pkgs) jdk;
 in
 {
 
@@ -14,6 +15,7 @@ in
     ../modules/home-manager/zsh.nix
     ../modules/home-manager/git.nix
     ../modules/home-manager/spotify.nix
+    ../modules/home-manager/rust.nix
   ];
 
   home = {
@@ -43,6 +45,8 @@ in
       XDG_CACHE_HOME = "$HOME/.cache";
       XDG_SCREENSHOTS_DIR = "$HOME/Pictures/screenshots";
 
+      JAVA_HOME = "${jdk.home}";
+
       # Path modifications - now as a string
       # PATH = "$HOME/.local/bin:$HOME/go/bin:$PATH";
 
@@ -58,6 +62,7 @@ in
       xclip
       lazygit
       legcord
+      jdk
       # my NixVim configuration
       inputs.Akari.packages.${system}.default
     ];

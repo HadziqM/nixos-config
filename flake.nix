@@ -48,7 +48,9 @@
           ./hosts/default.nix
           {
             # Enable unfree packages globally
-            nixpkgs.config.allowUnfree = true;
+            nixpkgs = {
+              config.allowUnfree = true;
+            };
 
             # Configure the hyprpanel overlay
             # nixpkgs.overlays = [

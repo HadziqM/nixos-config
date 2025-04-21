@@ -13,6 +13,7 @@ in
       "processor.max_cstate=5" # limit power usage
       "nvme.noacpi=1" # NVME power management
     ];
+    tmp.cleanOnBoot = true;
     loader = {
       efi.canTouchEfiVariables = true;
 

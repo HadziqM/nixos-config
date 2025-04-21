@@ -15,7 +15,6 @@ in
     # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ../modules/nixos/fonts.nix
-    ../modules/nixos/rust.nix
     ../modules/nixos/bootloader.nix
     ../modules/nixos/network.nix
     ../modules/nixos/users.nix
@@ -24,11 +23,12 @@ in
     ../modules/nixos/podman.nix
     ../modules/nixos/secure-dns.nix
     ../modules/nixos/flatpak.nix
-    ../modules/nixos/tailscale.nix
+    # ../modules/nixos/rust.nix
+    # ../modules/nixos/tailscale.nix
     # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
-    ../modules/nixos/android-dev.nix
+    # ../modules/nixos/android-dev.nix
     ../modules/nixos/gpu-driver/amd-drivers.nix
     ../modules/nixos/theme/stylix.nix
     ../modules/nixos/theme/grub-themes.nix
@@ -123,11 +123,10 @@ in
     };
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # install waydroid
-  virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = false;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -138,9 +137,6 @@ in
     # so git must be installed first
     vim
     curl
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zsh-history-substring-search
 
     # Text editors and IDEs
     nano
@@ -164,7 +160,6 @@ in
     stow
     wget
     killall
-    eza
     starship
     kitty
     fzf
@@ -239,6 +234,8 @@ in
     dig
     ventoy
     remmina
+
+    distrobox
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
