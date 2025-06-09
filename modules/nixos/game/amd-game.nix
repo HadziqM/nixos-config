@@ -14,10 +14,10 @@
 
   services.xserver.videoDrivers = [ "amdgpu" ];
   environment.systemPackages = with pkgs; [
-    wine
-    wine64
+    wineWowPackages.stable
     winetricks
     gamemode
     gamescope
+    lutris
   ];
 }

@@ -15,6 +15,7 @@ in
     # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
     ../modules/nixos/fonts.nix
+    ../modules/nixos/direnv.nix
     ../modules/nixos/bootloader.nix
     ../modules/nixos/network.nix
     ../modules/nixos/users.nix
@@ -23,8 +24,10 @@ in
     ../modules/nixos/podman.nix
     ../modules/nixos/secure-dns.nix
     ../modules/nixos/flatpak.nix
+    ../modules/nixos/udev.nix
+    ../modules/nixos/shell.nix
     # ../modules/nixos/rust.nix
-    # ../modules/nixos/tailscale.nix
+    ../modules/nixos/tailscale.nix
     # ../modules/nixos/hyprland.nix
     ../modules/nixos/hyprland.nix
     ../modules/nixos/mimetype.nix
@@ -43,6 +46,15 @@ in
     users = {
       ${conf.user} = import ./home-default.nix;
     };
+  };
+
+  users.users.${conf.user} = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel" # Enable 'sudo' for the user.
+      "dialout" # Allow access to serial device (for Arduino dev)
+      "networkmanager"
+    ];
   };
 
   # Enable CUPS to print documents.
@@ -236,6 +248,9 @@ in
     remmina
 
     distrobox
+
+    arduino-ide
+    gpsd
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

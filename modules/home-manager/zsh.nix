@@ -9,7 +9,7 @@
     zsh-history-substring-search
   ];
 
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
 
   home.file = {
     ".zshrc".source = ../../dotfiles/.zshrc;

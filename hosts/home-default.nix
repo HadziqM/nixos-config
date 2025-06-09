@@ -11,11 +11,11 @@ in
 
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
-    ../modules/home-manager/direnv.nix
+    # ../modules/home-manager/direnv.nix
     ../modules/home-manager/zsh.nix
     ../modules/home-manager/git.nix
     ../modules/home-manager/spotify.nix
-    ../modules/home-manager/rust.nix
+    # ../modules/home-manager/rust.nix
   ];
 
   home = {
@@ -26,6 +26,7 @@ in
       ".ideavimrc".source = ../dotfiles/.ideavimrc;
 
       # Config directories
+      ".config/staship.toml".source = ../dotfiles/.config/starship.toml;
       ".config/fastfetch".source = ../dotfiles/.config/fastfetch;
       ".config/kitty".source = ../dotfiles/.config/kitty;
       ".config/tmux/tmux.conf".source = ../dotfiles/.config/tmux/tmux.conf;
@@ -33,17 +34,6 @@ in
     };
     sessionVariables = {
       # Default applications
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      TERMINAL = "kitty";
-      BROWSER = "zen";
-
-      # XDG Base Directories
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_SCREENSHOTS_DIR = "$HOME/Pictures/screenshots";
 
       JAVA_HOME = "${jdk.home}";
 
@@ -63,6 +53,7 @@ in
       lazygit
       legcord
       jdk
+      bundletool
       # my NixVim configuration
       inputs.Akari.packages.${system}.default
     ];

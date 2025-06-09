@@ -4,7 +4,7 @@
 #  ┬  ┬┌─┐┬─┐┌─┐
 #  └┐┌┘├─┤├┬┘└─┐
 #   └┘ ┴ ┴┴└─└─┘
-export BROWSER='firefox'
+export BROWSER='zen'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export SUDO_PROMPT="Deploying root access for %u. Password pls: "
 export BAT_THEME="base16"
@@ -42,8 +42,10 @@ if [[ -n $DISTROBOX_ENTER_PATH ]]; then
     if [[ -d "$ANDROID_SDK_ROOT/cmake/3.22.1" ]]; then
       export PATH="$ANDROID_SDK_ROOT/cmake/3.22.1/bin:$PATH"
     fi
-
   fi
+
+  #Rustup dustrobox
+  . "$HOME/.cargo/env"
 fi
 
 #  ┬  ┌─┐┌─┐┌┬┐  ┌─┐┌┐┌┌─┐┬┌┐┌┌─┐
@@ -141,8 +143,6 @@ bindkey '^[[3~' delete-char
 #  ┌─┐┬  ┬┌─┐┌─┐
 #  ├─┤│  │├─┤└─┐
 #  ┴ ┴┴─┘┴┴ ┴└─┘
-alias mirrors="sudo reflector --verbose --latest 5 --country 'United States' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
-
 alias music="ncmpcpp"
 
 alias cat="bat --theme=base16"
@@ -155,3 +155,5 @@ alias ll='eza --icons=always --color=always -la'
 
 # use direnv
 eval "$(direnv hook zsh)"
+# eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
