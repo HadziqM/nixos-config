@@ -15,7 +15,10 @@ in
     ];
     tmp.cleanOnBoot = true;
     loader = {
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        inherit (conf) efiSysMountPoint;
+      };
 
       systemd-boot.enable = false;
 
