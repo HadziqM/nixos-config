@@ -1,15 +1,14 @@
-{ config, pkgs, ... }:
-
+{ conf, pkgs, ... }:
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.hadziq = {
+  users.users.${conf.user} = {
     isNormalUser = true;
-    description = "hadziq";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-    #  thunderbird
+    description = "main user";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
     ];
+    shell = pkgs.zsh;
   };
 }
-

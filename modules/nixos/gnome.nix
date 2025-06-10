@@ -6,16 +6,12 @@
 
   environment.systemPackages = with pkgs; [
     gnome-logs
-    # gnomeExtensions.gsconnect
+    gnomeExtensions.gsconnect
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.vitals
+    gnomeExtensions.tray-icons-reloaded
   ];
-
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
 
   programs.dconf = {
     enable = true;
@@ -26,15 +22,17 @@
           "org/gnome/desktop/interface".color-scheme = "prefer-dark";
           "org/gnome/shell" = {
             disable-user-extensions = false; # enables user extensions
-            enabled-extensions = [
+            enabled-extensions = with pkgs.gnomeExtensions; [
               # Put UUIDs of extensions that you want to enable here.
               # If the extension you want to enable is packaged in nixpkgs,
               # you can easily get its UUID by accessing its extensionUuid
               # field (look at the following example).
               # pkgs.gnomeExtensions.gsconnect.extensionUuid
-              pkgs.gnomeExtensions.caffeine.extensionUuid
-              pkgs.gnomeExtensions.vitals.extensionUuid
-              pkgs.gnomeExtensions.clipboard-indicator.extensionUuid
+              caffeine.extensionUuid
+              vitals.extensionUuid
+              clipboard-indicator.extensionUuid
+              tray-icons-reloaded.extensionUuid
+              gsconnect.extensionUuid
             ];
           };
         };

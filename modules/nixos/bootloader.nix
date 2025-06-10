@@ -1,10 +1,8 @@
 {
+  conf,
   pkgs,
   ...
 }:
-let
-  conf = builtins.fromJSON (builtins.readFile ../../setting.json);
-in
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;

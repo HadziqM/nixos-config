@@ -1,61 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   inputs,
   pkgs,
+  conf,
   ...
 }:
-let
-  conf = builtins.fromJSON (builtins.readFile ../setting.json);
-in
 {
   imports = [
     # Include the results of the hardware scan.
-    /etc/nixos/hardware-configuration.nix
-    ../modules/nixos/fonts.nix
-    ../modules/nixos/direnv.nix
-    ../modules/nixos/bootloader.nix
-    ../modules/nixos/network.nix
-    ../modules/nixos/users.nix
-    ../modules/nixos/audio.nix
-    ../modules/nixos/gnome.nix
-    ../modules/nixos/podman.nix
-    ../modules/nixos/secure-dns.nix
-    ../modules/nixos/flatpak.nix
-    ../modules/nixos/udev.nix
-    ../modules/nixos/shell.nix
-    # ../modules/nixos/rust.nix
-    ../modules/nixos/tailscale.nix
-    # ../modules/nixos/hyprland.nix
-    ../modules/nixos/hyprland.nix
-    ../modules/nixos/mimetype.nix
-    # ../modules/nixos/android-dev.nix
-    ../modules/nixos/gpu-driver/amd-drivers.nix
-    ../modules/nixos/theme/stylix.nix
-    ../modules/nixos/theme/grub-themes.nix
-    ../modules/nixos/theme/sddm.nix
-    ../modules/nixos/game/amd-game.nix
-    inputs.home-manager.nixosModules.default
+    ./hardware-configuration.nix
+    ../../modules/nixos
   ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-
-    users = {
-      ${conf.user} = import ./home-default.nix;
-    };
-  };
-
-  users.users.${conf.user} = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel" # Enable 'sudo' for the user.
-      "dialout" # Allow access to serial device (for Arduino dev)
-      "networkmanager"
-    ];
-  };
+  networking.hostName = "hadziq-pc";
 
   # Enable CUPS to print documents.
   services = {
@@ -70,11 +26,6 @@ in
         wayland.enable = true;
       };
     };
-    # xserver.displayManager.gdm = {
-    #   enable = true;
-    #   wayland = true;
-    # };
-
     cron = {
       enable = true;
     };
@@ -101,18 +52,8 @@ in
       };
     };
     gnome.gnome-keyring.enable = true;
-    # avahi = {
-    #   enable = true;
-    #   nssmdns4 = true;
-    #   openFirewall = true;
-    # };
-    # ipp-usb.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Packages
   programs = {
     nix-ld = {
       enable = true;
@@ -149,30 +90,19 @@ in
     # so git must be installed first
     vim
     curl
-
-    # Text editors and IDEs
     nano
 
-    # Programming languages and tools
-    lua
-    python3
-    python3Packages.pip
-    nodePackages_latest.yarn
-    # gcc
-    # ninja
     openssl
 
     # Version control and development tools
     git
     gh
-    lazygit
     coreutils
 
     # Shell and terminal utilities
     stow
     wget
     killall
-    starship
     kitty
     fzf
     tmux
@@ -180,11 +110,7 @@ in
     tree
     exfatprogs
 
-    # Zen Browser from custom input
-    inputs.zen-browser.packages."${system}".default
-
     # File management and archives
-    yazi
     p7zip
     unzip
     unrar
@@ -237,23 +163,17 @@ in
     cliphist
 
     # Fun and customization
-    cmatrix
     fastfetch
     microfetch
 
     # Networking
     networkmanagerapplet
     dig
-    ventoy
-    remmina
-
     distrobox
-
-    arduino-ide
     gpsd
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

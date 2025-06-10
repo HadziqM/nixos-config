@@ -1,6 +1,4 @@
-let
-  conf = builtins.fromJSON (builtins.readFile ../../setting.json);
-in
+{ conf, ... }:
 {
   programs.git = {
     enable = true;
