@@ -10,6 +10,7 @@
     # System info
     neofetch
     macchina
+    microfetch
 
     # File management
     yazi

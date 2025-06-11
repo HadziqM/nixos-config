@@ -63,26 +63,29 @@
       nixpkgs,
       home-manager,
       stylix,
+      rust-overlay,
       distro-grub-themes,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       conf = import ./param.nix;
+      overlays = [ (import rust-overlay) ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
     in
     {
+      homeConfigurations = import ./home {
+        inherit home-manager pkgs;
+        extraSpecialArgs = { inherit inputs; };
+      };
       # Please replace my-nixos with your hostname
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        inherit system;
+        inherit system pkgs;
         specialArgs = { inherit inputs conf; };
         modules = [
-          {
-            # Enable unfree packages globally
-            nixpkgs = {
-              config.allowUnfree = true;
-            };
-
-          }
           ./hosts/pc/configuration.nix
           stylix.nixosModules.stylix
           distro-grub-themes.nixosModules.${system}.default
