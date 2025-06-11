@@ -8,9 +8,9 @@
 
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
-    ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/spotify.nix
+    # ../../modules/home-manager/zsh.nix
+    # ../../modules/home-manager/git.nix
+    # ../../modules/home-manager/spotify.nix
     ../../dotfiles
 
     ../../modules/tui/scripts
@@ -49,7 +49,24 @@
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  gtk = {
+    # theme = {
+    #   name = lib.mkForce "Cyberpunk Neon";
+    #   package = lib.mkForce pkgs.cyberpunk-neon.gtk;
+    # };
+    iconTheme = {
+      name = "Candy Icons";
+      package = pkgs.candy-icons;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
+  # nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

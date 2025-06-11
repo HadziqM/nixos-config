@@ -8,16 +8,19 @@
 
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
-    ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/spotify.nix
     ../../dotfiles
+
     ../../modules/gui/zen-browser
     ../../modules/gui/vesktop
+    ../../modules/gui/spotify
+    ../../modules/gui/apps
 
     ../../modules/tui/cli-tools
     ../../modules/tui/starship
     ../../modules/tui/fish
+    ../../modules/tui/direnv
+    ../../modules/tui/git
+    ../../modules/tui/atuin
   ];
 
   home = {
@@ -26,6 +29,9 @@
     sessionVariables = {
       # Localization
       LC_ALL = "en_US.UTF-8";
+      BROWSER = "zen";
+      EDITOR = "nvim";
+      SUDO_PROMPT = "Deploying root access for %u. Password pls: ";
     };
     sessionPath = [
       "$HOME/.local/bin"

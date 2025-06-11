@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.kitty = {
     enable = true;
     keybindings = {
@@ -24,13 +25,12 @@
     };
     settings = {
       shell = "fish";
-      font_family = "monospace";
+      font_family = "auto";
       font_size = 10;
       enable_audio_bell = true;
 
       # Material You 3 cyan/teal theme
-      background = "#000000"; # base
-      background_opacity = "0.15";
+      background_opacity = "0.9";
       foreground = "#c4e7e8"; # text
       selection_background = "#263738"; # selection
       selection_foreground = "#5eead4"; # yellow (primary 80)
@@ -47,33 +47,36 @@
       inactive_tab_foreground = "#5f7c7d"; # line_number
       tab_bar_background = "#0e1415"; # base
 
-      # Windows
-      active_border_color = "#7dd3c0"; # peach (primary 70)
-      inactive_border_color = "#263738"; # selection
+      hide_window_decorations = "yes";
+      confirm_os_window_close = 0;
 
-      # normal colors - Material You 3 theme
-      color0 = "#0e1415"; # black (base)
-      color1 = "#f2718b"; # red (error 70)
-      color2 = "#34d399"; # green (primary variant 70)
-      color3 = "#5eead4"; # yellow (primary 80)
-      color4 = "#38bdf8"; # blue (sapphire - secondary 70)
-      color5 = "#d8709a"; # magenta (pink - tertiary 60)
-      color6 = "#2dd4bf"; # cyan (teal - primary 60)
-      color7 = "#c4e7e8"; # white (text)
-
-      # bright colors
-      color8 = "#263738"; # bright black (selection)
-      color9 = "#e25370"; # bright red (maroon - error 60)
-      color10 = "#7dd3c0"; # bright green (peach - primary 70)
-      color11 = "#67e8f9"; # bright yellow (sky - secondary 80)
-      color12 = "#0891b2"; # bright blue (blue - secondary 50)
-      color13 = "#c084fc"; # bright magenta (lavender - secondary variant 70)
-      color14 = "#5eead4"; # bright cyan (yellow - primary 80)
-      color15 = "#e0f2f3"; # bright white
-
-      # extended colors
-      color16 = "#a385cf"; # extended purple (mauve - secondary 70)
-      color17 = "#e694b3"; # extended pink (flamingo - tertiary 70)
+      # # Windows
+      # active_border_color = "#7dd3c0"; # peach (primary 70)
+      # inactive_border_color = "#263738"; # selection
+      #
+      # # normal colors - Material You 3 theme
+      # color0 = "#0e1415"; # black (base)
+      # color1 = "#f2718b"; # red (error 70)
+      # color2 = "#34d399"; # green (primary variant 70)
+      # color3 = "#5eead4"; # yellow (primary 80)
+      # color4 = "#38bdf8"; # blue (sapphire - secondary 70)
+      # color5 = "#d8709a"; # magenta (pink - tertiary 60)
+      # color6 = "#2dd4bf"; # cyan (teal - primary 60)
+      # color7 = "#c4e7e8"; # white (text)
+      #
+      # # bright colors
+      # color8 = "#263738"; # bright black (selection)
+      # color9 = "#e25370"; # bright red (maroon - error 60)
+      # color10 = "#7dd3c0"; # bright green (peach - primary 70)
+      # color11 = "#67e8f9"; # bright yellow (sky - secondary 80)
+      # color12 = "#0891b2"; # bright blue (blue - secondary 50)
+      # color13 = "#c084fc"; # bright magenta (lavender - secondary variant 70)
+      # color14 = "#5eead4"; # bright cyan (yellow - primary 80)
+      # color15 = "#e0f2f3"; # bright white
+      #
+      # # extended colors
+      # color16 = "#a385cf"; # extended purple (mauve - secondary 70)
+      # color17 = "#e694b3"; # extended pink (flamingo - tertiary 70)
 
       # Orange holographic theme (commented for reference)
       # background = "#000000";
@@ -125,4 +128,3 @@
     };
   };
 }
-

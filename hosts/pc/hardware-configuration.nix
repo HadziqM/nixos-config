@@ -36,6 +36,49 @@
     ];
   };
 
+  fileSystems = {
+    "/extdisk/work" = {
+      device = "/dev/disk/by-uuid/BA6A83DC6A839433";
+      fsType = "ntfs";
+      options = [
+        "defaults"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.device-timeout=5"
+        "uid=1000" # if you need specific ownership
+        "gid=100"
+        "x-gvfs-show"
+        "x-gvfs-name=work"
+      ];
+    };
+    "/extdisk/media" = {
+      device = "/dev/disk/by-uuid/4E759590173BA01C";
+      fsType = "ntfs";
+      options = [
+        "defaults"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.device-timeout=5"
+        "x-gvfs-show"
+        "x-gvfs-name=media"
+        "uid=1000" # if you need specific ownership
+        "gid=100"
+      ];
+    };
+    "/extdisk/extrassd" = {
+      device = "/dev/disk/by-uuid/add55c2c-0a5c-4fb2-90cd-c3cdce395d16";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.device-timeout=5"
+        "x-gvfs-show"
+        "x-gvfs-name=extrassd"
+      ];
+    };
+  };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

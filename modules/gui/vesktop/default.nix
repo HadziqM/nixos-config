@@ -1,9 +1,14 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.vesktop = {
     enable = true;
-    
+
     settings = {
       appBadge = false;
       arRPC = true;
@@ -14,16 +19,17 @@
       tray = true;
     };
 
-    vencord = {
-      themes = {
-        "translucence" = ./themes/translucence.css;
-      };
-      
-      settings = {
-        enabledThemes = [
-          "translucence.css"
-        ];
-      };
-    };
+    # vencord = {
+    #   themes = {
+    #     "translucence" = ./themes/translucence.css;
+    #   };
+    #
+    #   settings = {
+    #     enabledThemes = [
+    #       "translucence.css"
+    #     ];
+    #   };
+    # };
   };
 }
+

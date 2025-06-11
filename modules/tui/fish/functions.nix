@@ -2,13 +2,20 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   mkcd = ''
     if test (count $argv) -ne 1
       echo "Usage: mkcd <directory>"
       return 1
     end
     mkdir -p $argv[1] && cd $argv[1]
+  '';
+
+  nix-cleanup = ''
+    sudo rm /nix/var/nix/gcroots/auto/*
+    sudo nix-collect-garbage -d
+    sudo nix-store --optimise
   '';
 
   extract = ''
@@ -108,4 +115,3 @@
     ps aux | grep $argv[1] | grep -v grep | awk '{print $2}' | xargs -r kill
   '';
 }
-

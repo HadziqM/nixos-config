@@ -8,24 +8,39 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/nixos
+    ../../modules/nixos/essentials
+    ../../modules/nixos/network
+    ../../modules/nixos/game
+    ../../modules/nixos/gpu-driver/amd-drivers.nix
+    ../../modules/nixos/podman.nix
+    ../../modules/nixos/flatpak.nix
+    ../../modules/wm/gnome
+    ../../modules/wm/sddm
+    ../../modules/wm/stylix
   ];
 
   networking.hostName = "hadziq-pc";
 
+  users.users.${conf.user} = {
+    isNormalUser = true;
+    description = "main user";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+    ];
+    shell = pkgs.fish;
+  };
+
   # Enable CUPS to print documents.
   services = {
-    displayManager = {
-      autoLogin = {
-        enable = false;
-        inherit (conf) user;
-      };
-      defaultSession = "gnome";
-      sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-    };
+    # displayManager = {
+    #   autoLogin = {
+    #     enable = false;
+    #     inherit (conf) user;
+    #   };
+    #   defaultSession = "gnome";
+    # };
     cron = {
       enable = true;
     };
@@ -38,19 +53,6 @@
     };
     power-profiles-daemon.enable = true;
     thermald.enable = true;
-    # auto-cpufreq = {
-    #   enable = true;
-    #   settings = {
-    #     battery = {
-    #       governor = "powersave";
-    #       turbo = "never";
-    #     };
-    #     charger = {
-    #       governor = "performance";
-    #       turbo = "auto";
-    #     };
-    #   };
-    # };
     gnome.gnome-keyring.enable = true;
   };
 
@@ -63,6 +65,7 @@
     dconf.enable = true;
     fuse.userAllowOther = true;
     zsh.enable = true;
+    fish.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -75,12 +78,6 @@
       ];
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
-
-  # install waydroid
-  virtualisation.waydroid.enable = false;
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
