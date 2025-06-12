@@ -17,6 +17,12 @@
     ../../modules/tui/atuin
   ];
 
+  cli-tools.setting = {
+    enable = true;
+    # monitoring = true;
+    # flex = true;
+  };
+
   home = {
     username = "${conf.user}";
     homeDirectory = "/home/${conf.user}";
@@ -32,13 +38,10 @@
       "$HOME/.cargo/bin"
     ];
     packages = with pkgs; [
-      kitty
       xclip
       lazygit
     ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

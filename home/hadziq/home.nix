@@ -23,6 +23,11 @@
     ../../modules/tui/atuin
   ];
 
+  cli-tools.setting = {
+    enable = true;
+    monitoring = true;
+    flex = true;
+  };
   home = {
     username = "${conf.user}";
     homeDirectory = "/home/${conf.user}";
@@ -47,8 +52,6 @@
       inputs.Akari.packages.${system}.default
     ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

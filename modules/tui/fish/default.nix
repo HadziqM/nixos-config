@@ -30,6 +30,10 @@
 
       fish_vi_key_bindings
 
+      #for multiuser nix package non nixos
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+        source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+      end
 
     '';
 
