@@ -2,7 +2,7 @@
 
 {
 
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
     gnome-logs
@@ -10,8 +10,7 @@
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.vitals
-    gnomeExtensions.unite
-    gnomeExtensions.user-themes
+    gnomeExtensions.tray-icons-reloaded
   ];
 
   programs.dconf = {

@@ -79,7 +79,7 @@
     {
       homeConfigurations = import ./home {
         inherit home-manager pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs conf; };
       };
       # Please replace my-nixos with your hostname
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {

@@ -109,7 +109,6 @@
     fzf
     tmux
     progress
-    tree
     exfatprogs
 
     # File management and archives
