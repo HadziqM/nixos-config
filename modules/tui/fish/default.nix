@@ -47,9 +47,9 @@
 
 
       # Set up fzf key bindings if fzf is available
-      if command -v fzf >/dev/null
-        fzf_key_bindings
-      end
+      # if command -v fzf >/dev/null
+      #   fzf_key_bindings
+      # end
     '';
   };
 
