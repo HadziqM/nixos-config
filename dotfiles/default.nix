@@ -18,6 +18,9 @@
   home.packages = with pkgs; [
     bat
     eza
+    yazi
+    tmux
+    zsh
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-history-substring-search

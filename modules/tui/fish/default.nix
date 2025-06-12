@@ -31,10 +31,11 @@
       fish_vi_key_bindings
 
       #for multiuser nix package non nixos
-      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix.fish
-        source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+        for line in (bash -c 'source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && env' | grep -E '^(PATH|NIX_)')
+          set -gx (string split -m1 '=' $line)
+        end
       end
-
     '';
 
     interactiveShellInit = ''
