@@ -16,5 +16,7 @@
     remmina # remote desktop GUI client
     arduino-ide # full GUI IDE for Arduino
     networkmanagerapplet # GUI for managing networks
+    motrix
+    obs-studio
   ];
 }

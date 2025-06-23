@@ -6,6 +6,9 @@
 }:
 
 {
+  stylix.targets.vencord.enable = false;
+  stylix.targets.vesktop.enable = false;
+
   programs.vesktop = {
     enable = true;
 
@@ -19,17 +22,17 @@
       tray = true;
     };
 
-    # vencord = {
-    #   themes = {
-    #     "translucence" = ./themes/translucence.css;
-    #   };
-    #
-    #   settings = {
-    #     enabledThemes = [
-    #       "translucence.css"
-    #     ];
-    #   };
-    # };
+    vencord = {
+      themes = {
+        "translucence" = ./themes/translucence.css;
+        "frostedGlass" = ./themes/FrostedGlass.theme.css;
+      };
+
+      settings = {
+        enabledThemes = [
+          "FrostedGlass.theme.css"
+        ];
+      };
+    };
   };
 }
-
