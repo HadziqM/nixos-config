@@ -40,6 +40,8 @@ in
         zoxide
         gawk
         zstd
+
+        zellij
       ]
       # Monitoring tools
       ++ optionals cfg.monitoring [

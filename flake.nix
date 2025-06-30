@@ -82,26 +82,51 @@
         extraSpecialArgs = { inherit inputs conf; };
       };
       # Please replace my-nixos with your hostname
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        inherit system pkgs;
-        specialArgs = { inherit inputs conf; };
-        modules = [
-          ./hosts/pc/configuration.nix
-          stylix.nixosModules.stylix
-          distro-grub-themes.nixosModules.${system}.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              # make global and home manager use same nixpkgs
-              useGlobalPkgs = true;
-              # instead `$HOME/.nix-profile` use `/etc/profiles` instead
-              # so its possible to install sudo application
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs conf; };
-              users.${conf.user} = import ./home/hadziq/home.nix;
-            };
-          }
-        ];
+      nixosConfigurations = {
+        default = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = { inherit inputs conf; };
+          modules = [
+            ./hosts/pc/configuration.nix
+            stylix.nixosModules.stylix
+            distro-grub-themes.nixosModules.${system}.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                # make global and home manager use same nixpkgs
+                useGlobalPkgs = true;
+                # instead `$HOME/.nix-profile` use `/etc/profiles` instead
+                # so its possible to install sudo application
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs conf; };
+                users.${conf.user} = import ./home/hadziq/home.nix;
+              };
+            }
+          ];
+        };
+
+        hadziq-laptop = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = { inherit inputs conf; };
+          modules = [
+            ./hosts/laptop/configuration.nix
+            stylix.nixosModules.stylix
+            distro-grub-themes.nixosModules.${system}.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                # make global and home manager use same nixpkgs
+                useGlobalPkgs = true;
+                # instead `$HOME/.nix-profile` use `/etc/profiles` instead
+                # so its possible to install sudo application
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs conf; };
+                users.${conf.user} = import ./home/hadziq/home.nix;
+              };
+            }
+          ];
+        };
+
       };
     };
 }

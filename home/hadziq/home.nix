@@ -21,6 +21,8 @@
     ../../modules/tui/direnv
     ../../modules/tui/git
     ../../modules/tui/atuin
+    ../../modules/tui/nushell
+    ../../modules/tui/helix
   ];
 
   cli-tools.setting = {

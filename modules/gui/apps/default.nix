@@ -6,6 +6,8 @@
 }:
 {
   home.packages = with pkgs; [
+    python3 # arduino-ide prequisite
+
     pavucontrol # PulseAudio volume control GUI
     mpv # media player
     imagemagick # display(1) GUI viewer
