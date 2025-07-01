@@ -1,20 +1,23 @@
 { pkgs, ... }:
 {
   stylix.targets.helix.enable = false;
-  home.packages = with pkgs; [
-    svelte-language-server
-    tailwindcss-language-server
-    typescript-language-server
-    vscode-langservers-extracted
-  ];
+  # home.packages = with pkgs; [
+  #   svelte-language-server
+  #   tailwindcss-language-server
+  #   typescript-language-server
+  #   vscode-langservers-extracted
+  # ];
   programs.helix = {
     enable = true;
     settings = {
       theme = "gruvbox_transparent";
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
+      editor = {
+        file-picker.hiden = false;
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
       };
     };
     languages = {

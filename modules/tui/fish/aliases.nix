@@ -70,7 +70,4 @@
   rm = "rm -i";
   cp = "cp -i";
   mv = "mv -i";
-
-  # Restart caelestia
-  restart-desktop = "systemctl --user restart caelestia-shell.service";
 }
