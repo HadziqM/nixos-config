@@ -30,7 +30,7 @@
 
       settings = {
         enabledThemes = [
-          "frostedGlass"
+          "frostedGlass.css"
         ];
       };
     };

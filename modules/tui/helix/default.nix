@@ -12,7 +12,7 @@
     settings = {
       theme = "gruvbox_transparent";
       editor = {
-        file-picker.hiden = false;
+        file-picker.hidden = false;
         cursor-shape = {
           normal = "block";
           insert = "bar";

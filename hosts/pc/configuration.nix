@@ -17,9 +17,11 @@
     ../../modules/wm/gnome
     ../../modules/wm/sddm
     ../../modules/wm/stylix
+    inputs.niri.nixosModules.niri
   ];
 
   networking.hostName = "hadziq-pc";
+  programs.niri.enable = true;
 
   users.users.${conf.user} = {
     isNormalUser = true;

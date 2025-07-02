@@ -21,11 +21,11 @@ in
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
     package = pkgs.kdePackages.sddm;
-    extraPackages = [ astronaut ];
+    extraPackages = [ pkgs.sddm-astronaut ];
   };
 
   environment.systemPackages = [
-    astronaut
+    pkgs.sddm-astronaut
     pkgs.kdePackages.qtmultimedia
   ];
 }

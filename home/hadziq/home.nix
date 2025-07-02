@@ -10,6 +10,8 @@
     inputs.spicetify-nix.homeManagerModules.default
     ../../dotfiles
 
+    ../../modules/wm/niri
+
     ../../modules/gui/zen-browser
     ../../modules/gui/vesktop
     ../../modules/gui/spotify
