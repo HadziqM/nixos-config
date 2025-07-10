@@ -19,9 +19,7 @@
         modules-right = [
           "wireplumber"
           "battery"
-          "idle_inhibitor"
-          "network"
-          "bluetooth"
+          "memory"
           "tray"
         ];
 
@@ -51,16 +49,21 @@
         };
 
         battery = {
-          bat = "BAT1";
-          interval = 60;
           format = "{icon} {capacity}%";
+          format-charging = "{icon} {capacity}%";
           format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
           ];
+          interval = 5;
         };
 
         memory = {
@@ -70,23 +73,6 @@
 
         temperature = {
           format = "{temperatureC}°C";
-        };
-
-        network = {
-          format = "";
-          format-ethernet = "";
-          format-wifi = "";
-          format-disconnected = "";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{ifname}";
-          tooltip-format-disconnected = "Disconnected";
         };
 
         bluetooth = {
@@ -103,13 +89,6 @@
           spacing = 16;
         };
 
-        idle_inhibitor = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-        };
       }
 
     ];

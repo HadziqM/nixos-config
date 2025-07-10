@@ -1,0 +1,22 @@
+; ; >>> Variables and constants
+; ; ---------------------------
+; (include "colors.yuck")
+; (include "globals.yuck")
+; ; >>> Windows
+; ; -----------
+; ; >> Bars
+; (include "windows/bottom-bar.yuck")
+
+(defwidget activate-linux []
+  (box
+    :orientation "v"
+    :halign "start"
+    :valign "start"
+    (label :xalign 0 :markup "<span font_size=\"large\">Activate Linux</span>")
+    (label :xalign 0 :text "Go to Settings to activate Linux")))
+
+(defwindow activate-linux
+  :monitor 0
+  :stacking "fg"
+  :geometry (geometry :x "8px" :y "50px" :width "250px" :anchor "bottom right")
+  (activate-linux))

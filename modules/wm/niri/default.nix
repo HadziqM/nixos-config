@@ -8,11 +8,17 @@
     ./rules.nix
     ./wlogout.nix
   ];
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-gnome
-    gnome-keyring
-  ];
+  xdg.portal = {
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      gnome-keyring
+    ];
+    config = {
+      common = {
+        default = [ "gnome" ];
+      };
+    };
+  };
   home = {
     packages = with pkgs; [
       gnome-keyring
@@ -25,9 +31,11 @@
       catppuccin-cursors.mochaGreen
       libnotify
       mako
+      pamixer
     ];
   };
   stylix.targets.mako.enable = false;
+  services.gnome-keyring.enable = true;
   services.swww.enable = true;
   services.mako = {
     enable = true;

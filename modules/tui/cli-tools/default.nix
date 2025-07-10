@@ -41,7 +41,6 @@ in
         gawk
         zstd
 
-        zellij
       ]
       # Monitoring tools
       ++ optionals cfg.monitoring [
@@ -73,5 +72,8 @@ in
         cmatrix
         cowsay
       ];
+
+    programs.zellij.enable = true;
+
   };
 }

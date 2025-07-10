@@ -8,9 +8,11 @@
 
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
+    inputs.catppuccin.homeModules.catppuccin
     ../../dotfiles
 
     ../../modules/wm/niri
+    ../../modules/wm/eww
 
     ../../modules/gui/zen-browser
     ../../modules/gui/vesktop
@@ -32,6 +34,42 @@
     monitoring = true;
     flex = true;
   };
+
+  catppuccin = {
+    zellij.enable = true;
+    flavor = "mocha";
+    mako.enable = false;
+    helix.enable = false;
+    starship.enable = false;
+    atuin.enable = false;
+  };
+  # stylix.targets.qt.enable = false;
+  # stylix.targets.gtk.enable = false;
+  # qt = {
+  #   style.name = "kvantum";
+  #   platformTheme.name = "kvantum";
+  # };
+
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Catppuccin-Mocha-Standard-Mauve-Dark"; # Match what Stylix sets
+  #     package = pkgs.catppuccin-gtk.override {
+  #       accents = [ "mauve" ];
+  #       variant = "mocha";
+  #     };
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus-Dark";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  #   cursorTheme = {
+  #     name = "Bibata-Modern-Ice";
+  #     package = pkgs.bibata-cursors;
+  #     size = 24;
+  #   };
+  # };
+
   home = {
     username = "${conf.user}";
     homeDirectory = "/home/${conf.user}";

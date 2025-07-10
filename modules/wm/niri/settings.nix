@@ -3,7 +3,7 @@ let
   makeCommand = command: {
     command = [ command ];
   };
-  wallpaperScript = pkgs.writeScriptBin "niri-wallpaper" (builtins.readFile ./wallpaperAutoChange.sh);
+  # battery = pkgs.writeScriptBin "battery" (builtins.readFile ./bat_notif.sh);
 in
 {
   programs.niri = {
@@ -20,16 +20,14 @@ in
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
         QT_QPA_PLATFORMTHEME = "qt6ct";
-        QT_STYLE_OVERRIDE = "kvantum";
-        GTK_THEME = "Catppuccin-Dark";
         ELECTRON_OZONE_PLATFORM_HINT = "auto";
         OZONE_PLATFORM = "wayland";
         JAVA_AWT_WM_NONEREPARENTING = "1";
         ELECTRON_ENABLE_HARDWARE_ACCELERATION = "1";
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
-        #DISPLAY = ":0";
         DISPLAY = null;
+        SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       };
       spawn-at-startup = [
         (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
@@ -43,7 +41,8 @@ in
         (makeCommand "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "dbus-update-activation-environment --all")
         (makeCommand "${pkgs.xwayland-satellite}/bin/xwayland-satellite")
-        (makeCommand "${pkgs.xdg-desktop-portal-gnome}/libexec/xdg-desktop-portal-gnome")
+        # (makeCommand "${battery}/bin/battery")
+        # (makeCommand "${pkgs.xdg-desktop-portal-gnome}/libexec/xdg-desktop-portal-gnome")
       ];
       input = {
         keyboard.xkb.layout = "us";
@@ -67,20 +66,6 @@ in
         backdrop-color = "#11121d";
       }; # Tokyo Night background color
       screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
-      outputs = {
-        "eDP-1" = {
-          mode = {
-            width = 2160;
-            height = 1440;
-            refresh = null;
-          };
-          scale = 1.0;
-        };
-      };
-      cursor = {
-        size = 6;
-        theme = "Kureiji-Ollie-v2";
-      };
       layout = {
         background-color = "transparent";
         focus-ring.enable = false;

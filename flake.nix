@@ -34,17 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    astal-bar = {
-      url = "github:maotseantonio/astal-bar";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    walker.url = "github:abenz1267/walker";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs =
@@ -79,7 +69,7 @@
           inherit system pkgs;
           specialArgs = { inherit inputs conf; };
           modules = [
-            ./hosts/pc/configuration.nix
+            ./hosts/laptop/configuration.nix
             stylix.nixosModules.stylix
             distro-grub-themes.nixosModules.${system}.default
             home-manager.nixosModules.home-manager

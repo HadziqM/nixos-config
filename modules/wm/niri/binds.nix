@@ -48,6 +48,7 @@ in
       "Alt+D".action = spawn "vesktop";
       "Alt+M".action = spawn "spotify";
       "Alt+Y".action = yazi;
+      "Mod+G".action = maximize-column;
       "Alt+Space".action = spawn "wofi" "--show" "drun";
       "Ctrl+Alt+L".action = spawn "hyprlock";
       "Mod+Alt+Q".action = spawn "wlogout";
@@ -55,7 +56,7 @@ in
       "Mod+W".action = wbar;
       "Mod+Q".action = close-window;
       "Mod+S".action = switch-preset-column-width;
-      "Mod+F".action = maximize-column;
+      "Mod+F".action = fullscreen-window;
       "Mod+Shift+Space".action = fullscreen-window;
       "Mod+Shift+F".action = expand-column-to-available-width;
       "Mod+Space".action = toggle-window-floating;
