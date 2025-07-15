@@ -47,6 +47,7 @@ in
       "Alt+B".action = spawn "zen";
       "Alt+D".action = spawn "vesktop";
       "Alt+M".action = spawn "spotify";
+      "Alt+L".action = spawn "lutris";
       "Alt+Y".action = yazi;
       "Mod+G".action = maximize-column;
       "Alt+Space".action = spawn "wofi" "--show" "drun";

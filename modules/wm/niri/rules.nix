@@ -28,9 +28,7 @@ let
     "^(download)"
     "^(error)"
     "^(notification)"
-    "^(spotify)"
     "^(hiddify)"
-    "^(steam)"
     "^(com.mitchellh.ghostty)"
   ];
 
