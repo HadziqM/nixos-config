@@ -17,7 +17,6 @@
     ../../modules/wm/gnome
     ../../modules/wm/sddm
     ../../modules/wm/stylix
-    inputs.niri.nixosModules.niri
   ];
 
   networking.hostName = "hadziq-pc";
@@ -33,6 +32,7 @@
     ];
     shell = pkgs.fish;
   };
+  documentation.man.generateCaches = false;
 
   # Enable CUPS to print documents.
   services = {
@@ -153,7 +153,6 @@
     yad
     playerctl
     nh
-    ansible
 
     # File systems
     ntfs3g
@@ -174,6 +173,7 @@
     dig
     distrobox
     gpsd
+    niri
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

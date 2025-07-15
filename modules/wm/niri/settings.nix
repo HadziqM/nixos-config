@@ -26,7 +26,7 @@ in
         ELECTRON_ENABLE_HARDWARE_ACCELERATION = "1";
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
-        DISPLAY = null;
+        DISPLAY = ":0";
         SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
       };
       spawn-at-startup = [
