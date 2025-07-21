@@ -71,9 +71,16 @@ in
         ipcalc
         cmatrix
         cowsay
+        ani-cli
+        scrcpy
       ];
 
-    programs.zellij.enable = true;
+    programs.zellij = {
+      enable = true;
+      settings = {
+        show_startup_tips = false;
+      };
+    };
 
   };
 }

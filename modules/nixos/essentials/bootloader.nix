@@ -10,7 +10,9 @@
       "amd_pstate=active" # powerstate
       "processor.max_cstate=5" # limit power usage
       "nvme.noacpi=1" # NVME power management
+      "v4l2loopback" # virtual cam
     ];
+    extraModulePackages = [ pkgs.linuxKernel.packages.linux_zen.v4l2loopback ];
     tmp.cleanOnBoot = true;
     loader = {
       efi = {

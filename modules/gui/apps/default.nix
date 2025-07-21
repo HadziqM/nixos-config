@@ -19,6 +19,9 @@
     arduino-ide # full GUI IDE for Arduino
     networkmanagerapplet # GUI for managing networks
     motrix
+
     obs-studio
+    droidcam
+    obs-studio-plugins.droidcam-obs
   ];
 }
