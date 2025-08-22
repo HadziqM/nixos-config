@@ -24,7 +24,6 @@
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
-        localFiles
       ];
       enabledSnippets = with spicePkgs.snippets; [
         rotatingCoverart

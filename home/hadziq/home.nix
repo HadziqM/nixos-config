@@ -13,6 +13,7 @@
 
     ../../modules/wm/niri
     ../../modules/wm/eww
+    ../../modules/wm/quickshell
 
     ../../modules/gui/zen-browser
     ../../modules/gui/vesktop
@@ -91,7 +92,7 @@
       xclip
       lazygit
       # my NixVim configuration
-      inputs.Akari.packages.${system}.default
+      # inputs.Akari.packages.${system}.default
     ];
   };
 

@@ -20,7 +20,7 @@ let
     baseRule // floatingRule;
 
   openFloatingAppIds = [
-    "^(pwvucontrol)"
+    "^(pavucontrol)"
     "^(Volume Control)"
     "^(dialog)"
     "^(file_progress)"
@@ -44,7 +44,7 @@ let
     {
       geometry-corner-radius =
         let
-          radius = 15.0;
+          radius = 20.0;
         in
         {
           bottom-left = radius;
@@ -127,6 +127,8 @@ in
       matches = [
         { namespace = "^swww-daemon$"; }
         { namespace = "^wallpaper$"; }
+        { namespace = "^quickshell-wallpaper$"; }
+        { namespace = "^quickshell-overview$"; }
       ];
 
       place-within-backdrop = true;

@@ -50,7 +50,8 @@ in
       "Alt+L".action = spawn "lutris";
       "Alt+Y".action = yazi;
       "Mod+G".action = maximize-column;
-      "Alt+Space".action = spawn "wofi" "--show" "drun";
+      "Alt+Space".action = spawn "qs" "ipc" "call" "appLauncher" "toggle";
+      "Mod+Alt+W".action = spawn "qs" "ipc" "call" "lockScreen" "toggle";
       "Ctrl+Alt+L".action = spawn "hyprlock";
       "Mod+Alt+Q".action = spawn "wlogout";
       "Mod+E".action = wallPicker;

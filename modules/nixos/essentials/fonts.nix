@@ -3,12 +3,16 @@
 {
   fonts = {
     packages = with pkgs; [
-      pkgs.nerd-fonts.jetbrains-mono
-      noto-fonts-emoji
       fira-sans
       roboto
+      nerd-fonts._0xproto
+      nerd-fonts.droid-sans-mono
+      jetbrains-mono
+      noto-fonts
+      noto-fonts-emoji
       noto-fonts-cjk-sans
-      font-awesome
+      noto-fonts-cjk-serif
+      material-symbols
       material-icons
     ];
     fontconfig.enable = true;

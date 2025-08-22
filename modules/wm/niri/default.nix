@@ -48,7 +48,7 @@
       # Global settings
       actions = true;
       anchor = "top-right";
-      background-color = "#00000080"; # semi-transparent black
+      background-color = "transparent"; # semi-transparent black
       border-color = "#FFFFFF";
       border-radius = 8;
       default-timeout = 5000; # 5 seconds in milliseconds

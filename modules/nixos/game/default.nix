@@ -14,10 +14,15 @@
 
   programs.gamemode.enable = true;
 
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+    args = [ "--expose-wayland" ];
+  };
+
   environment.systemPackages = with pkgs; [
     wineWowPackages.stable
     winetricks
-    gamescope
     lutris
     mangohud
   ];

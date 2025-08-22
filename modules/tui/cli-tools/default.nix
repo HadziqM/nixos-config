@@ -73,6 +73,8 @@ in
         cowsay
         ani-cli
         scrcpy
+        gpu-screen-recorder
+        cava
       ];
 
     programs.zellij = {

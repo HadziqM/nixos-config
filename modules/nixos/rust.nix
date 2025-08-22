@@ -12,6 +12,13 @@
         "i686-linux-android"
         "x86_64-linux-android"
       ];
+
+      extensions = [
+        "rust-src"
+        "clippy"
+        "rustfmt"
+        "rust-analyzer"
+      ];
     })
     gcc
     sqlx-cli
