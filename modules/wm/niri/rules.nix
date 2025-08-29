@@ -95,7 +95,7 @@ let
     }
     {
       matches = [
-        { app-id = "^(zen|firefox|equibop|chromium-browser|edge|chrome-.*|zen-.*)$"; }
+        { app-id = "^(spotify|zen|firefox|equibop|chromium-browser|edge|chrome-.*|zen-.*)$"; }
       ];
       open-maximized = true;
     }

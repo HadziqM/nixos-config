@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   conf,
   ...
 }:
@@ -11,10 +10,12 @@
 
     ../../modules/tui/cli-tools
     ../../modules/tui/starship
-    ../../modules/tui/fish
+    # ../../modules/tui/fish
     ../../modules/tui/direnv
-    ../../modules/tui/git
     ../../modules/tui/atuin
+    ../../modules/tui/nushell
+    ../../modules/tui/zsh
+    ../../modules/tui/helix
   ];
 
   cli-tools.setting = {
@@ -43,5 +44,4 @@
     ];
   };
 
-  home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

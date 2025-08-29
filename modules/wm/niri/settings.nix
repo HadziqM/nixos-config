@@ -37,7 +37,7 @@ in
         # (makeCommand "waybar")
         # (makeCommand "mako")
         (makeCommand "qs")
-        (makeCommand "swww-daemon")
+        # (makeCommand "swww-daemon")
         (makeCommand "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "dbus-update-activation-environment --all")
@@ -233,7 +233,7 @@ in
         }
       '';
       prefer-no-csd = true;
-      hotkey-overlay.skip-at-startup = false;
+      hotkey-overlay.skip-at-startup = true;
 
     };
   };

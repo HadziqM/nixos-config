@@ -22,7 +22,8 @@
 
     ../../modules/tui/cli-tools
     ../../modules/tui/starship
-    ../../modules/tui/fish
+    # ../../modules/tui/fish
+    ../../modules/tui/zsh
     ../../modules/tui/direnv
     ../../modules/tui/git
     ../../modules/tui/atuin
@@ -88,7 +89,6 @@
     ];
     packages = with pkgs; [
       kitty
-      inputs.zen-browser.packages."${system}".default
       xclip
       lazygit
       # my NixVim configuration
@@ -96,5 +96,4 @@
     ];
   };
 
-  home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

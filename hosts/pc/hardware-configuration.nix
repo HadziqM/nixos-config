@@ -24,7 +24,11 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ac6bd71d-951b-4049-b9fc-e80ddc1cc5dc";
     fsType = "btrfs";
-    options = [ "subvol=@" ];
+    options = [
+      "subvol=@"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/boot/efi" = {
@@ -45,7 +49,7 @@
         "nofail"
         "x-systemd.automount"
         "x-systemd.device-timeout=5"
-        "uid=1000" # if you need specific ownership
+        "uid=1000"
         "gid=100"
         "x-gvfs-show"
         "x-gvfs-name=work"
@@ -61,7 +65,7 @@
         "x-systemd.device-timeout=5"
         "x-gvfs-show"
         "x-gvfs-name=media"
-        "uid=1000" # if you need specific ownership
+        "uid=1000"
         "gid=100"
       ];
     };

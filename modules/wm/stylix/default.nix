@@ -1,8 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
-    image = ../../../neon.jpg;
+    image = ../../../asset/neon.jpg;
     base16Scheme = ./mocha.yml;
     polarity = "dark";
     opacity.terminal = 0.8;

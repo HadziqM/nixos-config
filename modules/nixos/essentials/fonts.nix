@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   fonts = {
     packages = with pkgs; [
       fira-sans
+      font-awesome
       roboto
       nerd-fonts._0xproto
       nerd-fonts.droid-sans-mono
+      nerd-fonts.jetbrains-mono
       jetbrains-mono
       noto-fonts
       noto-fonts-emoji

@@ -23,5 +23,6 @@
     obs-studio
     droidcam
     obs-studio-plugins.droidcam-obs
+
   ];
 }

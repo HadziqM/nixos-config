@@ -25,5 +25,9 @@
     dioxus-cli
     wasm-bindgen-cli
     trunk
+    cargo-deb
+    cargo-bundle
+    cargo-cache
+    cargo-watch
   ];
 }

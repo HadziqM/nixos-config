@@ -29,7 +29,7 @@
   # programs.zsh.enable = true;
 
   home.file = {
-    ".zshrc".source = ./.zshrc;
+    # ".zshrc".source = ./.zshrc;
     ".local/share/zsh/plugins/zsh-autosuggestions".source =
       "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
     ".local/share/zsh/plugins/zsh-syntax-highlighting".source =

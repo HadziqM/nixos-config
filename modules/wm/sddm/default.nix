@@ -2,7 +2,7 @@
 let
   background-package = pkgs.stdenvNoCC.mkDerivation {
     name = "background-image";
-    src = ../../../neon.jpg;
+    src = ../../../asset/neon.jpg;
     dontUnpack = true;
     installPhase = ''
       cp $src $out
@@ -25,7 +25,7 @@ in
   };
 
   environment.systemPackages = [
-    pkgs.sddm-astronaut
+    astronaut
     pkgs.kdePackages.qtmultimedia
   ];
 }

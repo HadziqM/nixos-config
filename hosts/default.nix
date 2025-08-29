@@ -5,16 +5,16 @@
   ...
 }:
 {
+
   imports = [
     # Include the results of the hardware scan.
     ../modules/nixos/essentials
     ../modules/nixos/network
     ../modules/nixos/game
-    ../modules/nixos/gpu-driver/amd-drivers.nix
     ../modules/nixos/podman.nix
     ../modules/nixos/flatpak.nix
     ../modules/nixos/rust.nix
-    ../modules/wm/gnome
+    # ../modules/wm/gnome
     ../modules/wm/sddm
     ../modules/wm/stylix
   ];
@@ -31,17 +31,22 @@
     ];
     shell = pkgs.nushell;
   };
+
+  nix.settings.trusted-users = [
+    "root"
+    conf.user
+  ];
   documentation.man.generateCaches = false;
 
   # Enable CUPS to print documents.
   services = {
-    # displayManager = {
-    #   autoLogin = {
-    #     enable = false;
-    #     inherit (conf) user;
-    #   };
-    #   defaultSession = "gnome";
-    # };
+    displayManager = {
+      autoLogin = {
+        enable = false;
+        inherit (conf) user;
+      };
+      defaultSession = "niri";
+    };
     cron = {
       enable = true;
     };
@@ -149,7 +154,10 @@
     lshw
     bat
     pkg-config
+
     brightnessctl
+    ddcutil
+
     swappy
     appimage-run
     yad
@@ -176,6 +184,8 @@
     distrobox
     gpsd
     niri
+
+    gparted
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

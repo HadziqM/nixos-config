@@ -6,7 +6,7 @@
 let
 
   wall = pkgs.writeScriptBin "wall" (builtins.readFile ./wallPick.sh);
-  waybarToggle = pkgs.writeScriptBin "wbar-toggle" (builtins.readFile ./waybarToggl.sh);
+  # waybarToggle = pkgs.writeScriptBin "wbar-toggle" (builtins.readFile ./waybarToggl.sh);
 in
 {
   programs.niri.settings.binds =
@@ -17,7 +17,7 @@ in
       set-volume = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@";
       playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
       wallPicker = spawn "${wall}/bin/wall";
-      wbar = spawn "${waybarToggle}/bin/wbar-toggle";
+      # wbar = spawn "${waybarToggle}/bin/wbar-toggle";
       brightness-up = spawn "brightnessctl" "set" "10%+";
       brightness-down = spawn "brightnessctl" "set" "10%-";
     in
@@ -55,13 +55,14 @@ in
       "Ctrl+Alt+L".action = spawn "hyprlock";
       "Mod+Alt+Q".action = spawn "wlogout";
       "Mod+E".action = wallPicker;
-      "Mod+W".action = wbar;
+      # "Mod+W".action = wbar;
       "Mod+Q".action = close-window;
       "Mod+S".action = switch-preset-column-width;
       "Mod+F".action = fullscreen-window;
       "Mod+Shift+Space".action = fullscreen-window;
       "Mod+Shift+F".action = expand-column-to-available-width;
       "Mod+Space".action = toggle-window-floating;
+      "Mod+O".action = toggle-window-rule-opacity;
       "Mod+T".action = toggle-column-tabbed-display;
       "Mod+Comma".action = consume-window-into-column;
       "Mod+Period".action = expel-window-from-column;

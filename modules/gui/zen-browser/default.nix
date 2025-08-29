@@ -1,8 +1,8 @@
-{ config, pkgs, inputs, lib, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = [ inputs.zen-browser.packages.${pkgs.system}.zen-browser ];
-  
+
   # Declaratively manage CSS files for Zen Browser
   # This will apply to all Zen Browser profiles
   home.file = {

@@ -57,6 +57,8 @@ in
         ethtool
         pciutils
         usbutils
+
+        devenv
       ]
       # Flexible/Additional tools
       ++ optionals cfg.flex [
