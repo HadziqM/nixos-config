@@ -69,18 +69,18 @@
         "gid=100"
       ];
     };
-    "/extdisk/extrassd" = {
-      device = "/dev/disk/by-uuid/add55c2c-0a5c-4fb2-90cd-c3cdce395d16";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "nofail"
-        "x-systemd.automount"
-        "x-systemd.device-timeout=5"
-        "x-gvfs-show"
-        "x-gvfs-name=extrassd"
-      ];
-    };
+    # "/extdisk/extrassd" = {
+    #   device = "/dev/disk/by-uuid/add55c2c-0a5c-4fb2-90cd-c3cdce395d16";
+    #   fsType = "ext4";
+    #   options = [
+    #     "defaults"
+    #     "nofail"
+    #     "x-systemd.automount"
+    #     "x-systemd.device-timeout=5"
+    #     "x-gvfs-show"
+    #     "x-gvfs-name=extrassd"
+    #   ];
+    # };
   };
 
   swapDevices = [ ];

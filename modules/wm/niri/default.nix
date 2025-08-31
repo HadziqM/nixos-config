@@ -9,13 +9,26 @@
     ./wlogout.nix
   ];
   xdg.portal = {
+    enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gnome
-      gnome-keyring
+      xdg-desktop-portal-gtk
     ];
     config = {
+      niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+      };
       common = {
-        default = [ "gnome" ];
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        # "org.freedesktop.impl.portal.FileChooser" = "gtk";
       };
     };
   };

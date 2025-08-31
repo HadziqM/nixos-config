@@ -44,4 +44,5 @@
     ];
   };
 
+  home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

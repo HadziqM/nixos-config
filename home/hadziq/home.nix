@@ -52,25 +52,35 @@
   #   platformTheme.name = "kvantum";
   # };
 
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Catppuccin-Mocha-Standard-Mauve-Dark"; # Match what Stylix sets
-  #     package = pkgs.catppuccin-gtk.override {
-  #       accents = [ "mauve" ];
-  #       variant = "mocha";
-  #     };
-  #   };
-  #   iconTheme = {
-  #     name = "Papirus-Dark";
-  #     package = pkgs.papirus-icon-theme;
-  #   };
-  #   cursorTheme = {
-  #     name = "Bibata-Modern-Ice";
-  #     package = pkgs.bibata-cursors;
-  #     size = 24;
-  #   };
-  # };
+  gtk = {
+    #   enable = true;
+    #   theme = {
+    #     name = "Catppuccin-Mocha-Standard-Mauve-Dark"; # Match what Stylix sets
+    #     package = pkgs.catppuccin-gtk.override {
+    #       accents = [ "mauve" ];
+    #       variant = "mocha";
+    #     };
+    #   };
+    iconTheme = {
+      name = "candy-icons";
+      package = pkgs.candy-icons;
+    };
+    #   cursorTheme = {
+    #     name = "Bibata-Modern-Ice";
+    #     package = pkgs.bibata-cursors;
+    #     size = 24;
+    #   };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+
+      # Add these for file/folder management
+      "inode/directory" = "thunar.desktop";
+      "application/x-directory" = "thunar.desktop";
+    };
+  };
 
   home = {
     username = "${conf.user}";
@@ -88,7 +98,6 @@
       "$HOME/.cargo/bin"
     ];
     packages = with pkgs; [
-      kitty
       xclip
       lazygit
       # my NixVim configuration
@@ -96,4 +105,5 @@
     ];
   };
 
+  home.stateVersion = "25.05"; # Make sure to set this to your NixOS version
 }

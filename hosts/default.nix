@@ -53,6 +53,8 @@
     libinput.enable = true;
     fstrim.enable = true;
     openssh.enable = true;
+    gvfs.enable = true;
+    udisks2.enable = true;
     printing = {
       enable = true;
       drivers = [ pkgs.hplipWithPlugin ];
@@ -81,6 +83,7 @@
       plugins = with pkgs.xfce; [
         thunar-archive-plugin
         thunar-volman
+        thunar-media-tags-plugin
       ];
     };
   };
@@ -124,6 +127,10 @@
     p7zip
     unzip
     unrar
+    xarchiver
+
+    #Icon Theme
+    sweet-folders
 
     # System monitoring and management
     htop
