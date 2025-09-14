@@ -1,4 +1,10 @@
+{ pkgs, ... }:
 {
+
+  home.packages = [
+    pkgs.zoxide
+  ];
+
   programs.nushell = {
     enable = true;
     shellAliases = {

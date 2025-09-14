@@ -1,4 +1,8 @@
+{ pkgs, ... }:
 {
+  home.packages = [
+    pkgs.zoxide
+  ];
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;

@@ -117,5 +117,19 @@
         hadziq-pc = mkNixosSystem ./hosts/pc/configuration.nix;
         hadziq-laptop = mkNixosSystem ./hosts/laptop/configuration.nix;
       };
+      homeModules = {
+        shell = {
+          imports = [
+            ./modules/tui/zsh
+            ./modules/tui/nushell
+            ./modules/tui/atuin
+            ./modules/tui/starship
+          ];
+        };
+        cli-tools = ./modules/tui/cli-tools;
+        spotify = ./modules/gui/spotify;
+        discord = ./modules/gui/vesktop;
+        helix = ./modules/tui/helix;
+      };
     };
 }

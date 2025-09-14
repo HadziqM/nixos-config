@@ -28,8 +28,6 @@ let
     "^(download)"
     "^(error)"
     "^(notification)"
-    "^(hiddify)"
-    "^(com.mitchellh.ghostty)"
   ];
 
   floatingRules = builtins.map (
@@ -54,6 +52,7 @@ let
         };
       clip-to-geometry = true;
       draw-border-with-background = false;
+      open-maximized = true;
     }
     {
       matches = [ { app-id = "^niri$"; } ];
@@ -93,12 +92,12 @@ let
         inactive.color = "#a9b1d600";
       };
     }
-    {
-      matches = [
-        { app-id = "^(spotify|zen|firefox|equibop|chromium-browser|edge|chrome-.*|zen-.*)$"; }
-      ];
-      open-maximized = true;
-    }
+    # {
+    #   matches = [
+    #     { app-id = "^(spotify|zen|firefox|equibop|chromium-browser|edge|chrome-.*|zen-.*)$"; }
+    #   ];
+    #   open-maximized = true;
+    # }
     {
       matches = [
         { app-id = "^(dropdown)$"; }
