@@ -1,92 +1,96 @@
 {
-  "appLauncher": {
-    "enableClipboardHistory": true,
-    "pinnedExecs": [],
-    "position": "center"
-  },
-  "audio": {
-    "showMiniplayerAlbumArt": true,
-    "showMiniplayerCava": true,
-    "visualizerType": "linear",
-    "volumeStep": 5
-  },
-  "bar": {
-    "alwaysShowBatteryPercentage": false,
-    "backgroundOpacity": 0,
-    "monitors": [],
-    "position": "top",
-    "showActiveWindow": true,
-    "showActiveWindowIcon": true,
-    "showBrightness": true,
-    "showMedia": true,
-    "showNotificationsHistory": true,
-    "showSystemInfo": true,
-    "showTray": true
-  },
-  "brightness": {
-    "brightnessStep": 5
-  },
-  "colorSchemes": {
-    "darkMode": true,
-    "predefinedScheme": "",
-    "themeApps": false,
-    "useWallpaperColors": true
-  },
-  "dock": {
-    "autoHide": false,
-    "exclusive": false,
-    "monitors": []
-  },
-  "general": {
-    "avatarImage": "/home/hadziq/.face",
-    "dimDesktop": false,
-    "radiusRatio": 1,
-    "showScreenCorners": false
-  },
-  "location": {
-    "name": "Lamongan",
-    "reverseDayMonth": false,
-    "showDateWithClock": false,
-    "use12HourClock": false,
-    "useFahrenheit": false
-  },
-  "monitorsScaling": null,
-  "network": {
-    "bluetoothEnabled": true,
-    "wifiEnabled": true
-  },
-  "notifications": {
-    "monitors": []
-  },
-  "screenRecorder": {
-    "audioCodec": "opus",
-    "audioSource": "default_output",
-    "colorRange": "limited",
-    "directory": "~/Videos",
-    "frameRate": 60,
-    "quality": "very_high",
-    "showCursor": true,
-    "videoCodec": "h264",
-    "videoSource": "portal"
-  },
-  "ui": {
-    "fontBillboard": "Inter",
-    "fontDefault": "Roboto",
-    "fontFamily": "Roboto",
-    "fontFixed": "DejaVu Sans Mono",
-    "idleInhibitorEnabled": false
-  },
-  "wallpaper": {
-    "current": "",
-    "directory": "/home/hadziq/Pictures/wallpapers",
-    "isRandom": false,
-    "randomInterval": 60,
-    "swww": {
-      "enabled": true,
-      "resizeMethod": "crop",
-      "transitionDuration": 1.1,
-      "transitionFps": 60,
-      "transitionType": "random"
+    "appLauncher": {
+        "enableClipboardHistory": true,
+        "pinnedExecs": [
+        ],
+        "position": "center"
+    },
+    "audio": {
+        "showMiniplayerAlbumArt": true,
+        "showMiniplayerCava": true,
+        "visualizerType": "linear",
+        "volumeStep": 5
+    },
+    "bar": {
+        "alwaysShowBatteryPercentage": false,
+        "backgroundOpacity": 0,
+        "monitors": [
+        ],
+        "position": "top",
+        "showActiveWindow": true,
+        "showActiveWindowIcon": true,
+        "showBrightness": true,
+        "showMedia": true,
+        "showNotificationsHistory": true,
+        "showSystemInfo": true,
+        "showTray": true
+    },
+    "brightness": {
+        "brightnessStep": 5
+    },
+    "colorSchemes": {
+        "darkMode": true,
+        "predefinedScheme": "",
+        "themeApps": false,
+        "useWallpaperColors": true
+    },
+    "dock": {
+        "autoHide": false,
+        "exclusive": false,
+        "monitors": [
+        ]
+    },
+    "general": {
+        "avatarImage": "/home/hadziq/.face",
+        "dimDesktop": false,
+        "radiusRatio": 1,
+        "showScreenCorners": false
+    },
+    "location": {
+        "name": "Lamongan",
+        "reverseDayMonth": false,
+        "showDateWithClock": false,
+        "use12HourClock": false,
+        "useFahrenheit": false
+    },
+    "monitorsScaling": null,
+    "network": {
+        "bluetoothEnabled": true,
+        "wifiEnabled": true
+    },
+    "notifications": {
+        "monitors": [
+        ]
+    },
+    "screenRecorder": {
+        "audioCodec": "opus",
+        "audioSource": "default_output",
+        "colorRange": "limited",
+        "directory": "~/Videos",
+        "frameRate": 60,
+        "quality": "very_high",
+        "showCursor": true,
+        "videoCodec": "h264",
+        "videoSource": "portal"
+    },
+    "ui": {
+        "fontBillboard": "Inter",
+        "fontDefault": "Roboto",
+        "fontFamily": "Roboto",
+        "fontFixed": "DejaVu Sans Mono",
+        "idleInhibitorEnabled": false
+    },
+    "wallpaper": {
+        "current": "/home/hadziq/Pictures/wallpapers/redditislikefb-astral-summit.png",
+        "directory": "/home/hadziq/Pictures/wallpapers",
+        "isRandom": false,
+        "randomInterval": 60,
+        "swww": {
+            "enabled": true,
+            "resizeMethod": "crop",
+            "transitionDuration": 1.1,
+            "transitionFps": 60,
+            "transitionType": "random"
+        }
     }
-  }
 }
