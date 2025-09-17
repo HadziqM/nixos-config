@@ -6,12 +6,38 @@
     typescript-language-server
     vscode-langservers-extracted
   ];
+
+  home.file.".ignore".text = ''
+    # Version control directories
+    .git/
+    .svn/
+    .hg/
+    .bzr/
+
+    # Build directories
+    target/
+    build/
+    dist/
+    out/
+
+    # Dependencies
+    node_modules/
+    .pnpm-store/
+    .yarn/
+    vendor/
+
+    .direnv/
+  '';
+
   programs.helix = {
     enable = true;
     settings = {
       theme = "mocha_transparent";
       editor = {
-        file-picker.hidden = false;
+        file-picker = {
+          hidden = false;
+          ignore = true;
+        };
         cursor-shape = {
           normal = "block";
           insert = "bar";
