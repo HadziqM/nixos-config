@@ -1,4 +1,26 @@
 { pkgs, ... }:
+let
+  hx-lsp = pkgs.rustPlatform.buildRustPackage {
+    pname = "hx-lsp";
+    version = "0.2.11";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "erasin";
+      repo = "hx-lsp";
+      rev = "0.2.11";
+      sha256 = "sha256-wTilbEK3BZehklAd+3SS2tW/vc8WEeMPUsYdDVRC/Ho=";
+    };
+
+    cargoHash = "sha256-dcGInrfWftClvzrxYZvrazm+IWWRfOZmxDJPKwu7GwM=";
+
+    meta = with pkgs.lib; {
+      description = "lsp for helix , support snippets, actions";
+      homepage = "https://github.com/erasin/hx-lsp";
+      license = licenses.mit;
+      maintainers = [ ];
+    };
+  };
+in
 {
   stylix.targets.helix.enable = false;
   home.packages = with pkgs; [
@@ -6,29 +28,31 @@
     typescript-language-server
     vscode-langservers-extracted
   ];
+  home.file = {
+    ".config/helix/snippets".source = ../../../asset/snippet;
 
-  home.file.".ignore".text = ''
-    # Version control directories
-    .git/
-    .svn/
-    .hg/
-    .bzr/
+    ".ignore".text = ''
+      # Version control directories
+      .git/
+      .svn/
+      .hg/
+      .bzr/
 
-    # Build directories
-    target/
-    build/
-    dist/
-    out/
+      # Build directories
+      target/
+      build/
+      dist/
+      out/
 
-    # Dependencies
-    node_modules/
-    .pnpm-store/
-    .yarn/
-    vendor/
+      # Dependencies
+      node_modules/
+      .pnpm-store/
+      .yarn/
+      vendor/
 
-    .direnv/
-  '';
-
+      .direnv/
+    '';
+  };
   programs.helix = {
     enable = true;
     settings = {
@@ -73,8 +97,16 @@
             "tailwind"
           ];
         }
+        {
+          name = "dart";
+          language-servers = [
+            "dart"
+            "hx-lsp"
+          ];
+        }
       ];
       language-server = {
+        hx-lsp.command = "${hx-lsp}/bin/hx-lsp";
         sqls = {
           command = "${pkgs.sqlint}/bin/sqlint";
         };

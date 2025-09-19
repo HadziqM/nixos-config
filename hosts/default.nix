@@ -13,7 +13,7 @@
     ../modules/nixos/game
     ../modules/nixos/podman.nix
     ../modules/nixos/flatpak.nix
-    ../modules/nixos/rust.nix
+    # ../modules/nixos/rust.nix
     # ../modules/wm/gnome
     ../modules/wm/sddm
     ../modules/wm/stylix
@@ -62,6 +62,7 @@
     power-profiles-daemon.enable = true;
     thermald.enable = true;
     gnome.gnome-keyring.enable = true;
+    gnome.gcr-ssh-agent.enable = true;
   };
 
   programs = {
@@ -101,8 +102,12 @@
     curl
     nano
 
-    fish
     nodejs
+    clang
+    llvmPackages.bintools
+    rustup
+    gcc
+    gnumake
 
     bibata-cursors
 
