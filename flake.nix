@@ -4,7 +4,7 @@
   nixConfig = {
     substituters = [
       # tailscale ip build machine pc
-      "http://192.168.1.255:5000"
+      "http://192.168.1.14:5000"
       "https://nix-community.cachix.org"
       "https://cache.nixos.org/"
     ];
