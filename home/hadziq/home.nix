@@ -45,6 +45,12 @@
     starship.enable = false;
     atuin.enable = false;
   };
+
+  services.wlsunset = {
+    enable = true;
+    latitude = -7.056651;
+    longitude = 112.537714;
+  };
   # stylix.targets.qt.enable = false;
   # stylix.targets.gtk.enable = false;
   # qt = {

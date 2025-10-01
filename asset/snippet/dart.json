@@ -1,4 +1,17 @@
 {
+  "Consumer Stateless Widget": {
+    "prefix": "consStatelessW",
+    "body": [
+      "class ${1:name} extends ConsumerWidget {",
+      "  const ${1:name}({super.key});\n",
+      "  @override",
+      "  Widget build(BuildContext context, Widgetref ref) {",
+      "    return Container();",
+      "  }",
+      "}"
+    ],
+    "description": "Create a Stateless widget"
+  },
   "Stateless Widget": {
     "prefix": "statelessW",
     "body": [
@@ -21,6 +34,23 @@
       "  State<${1:index}> createState() => _${1:WidgetName}State();",
       "}\n",
       "class _${1:index}State extends State<${1:index}> {",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return Container();",
+      "  }",
+      "}"
+    ],
+    "description": "Create a Stateful widget"
+  },
+  "Consumer Stateful Widget": {
+    "prefix": "consStatefulW",
+    "body": [
+      "class ${1:name} extends ConsumerStatefulWidget {",
+      "  const ${1:name}({super.key});\n",
+      "  @override",
+      "  ConsumerState<${1:index}> createState() => _${1:WidgetName}State();",
+      "}\n",
+      "class _${1:index}State extends ConsumerState<${1:index}> {",
       "  @override",
       "  Widget build(BuildContext context) {",
       "    return Container();",

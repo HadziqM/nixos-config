@@ -36,7 +36,8 @@ in
         (makeCommand "wl-paste --watch walker --update-clipboard")
         # (makeCommand "waybar")
         # (makeCommand "mako")
-        (makeCommand "qs")
+        # (makeCommand "qs")
+        (makeCommand "noctalia-shell")
         # (makeCommand "swww-daemon")
         (makeCommand "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
         (makeCommand "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -62,6 +63,15 @@ in
         focus-follows-mouse.enable = false;
         warp-mouse-to-focus.enable = true;
         workspace-auto-back-and-forth = true;
+      };
+      outputs = {
+        "ViewSonic Corporation VA2432 100Hz W33242982676" = {
+          mode = {
+            height = 1080;
+            width = 1920;
+            refresh = 100.0;
+          };
+        };
       };
       overview = {
         backdrop-color = "#11121d";

@@ -2,21 +2,21 @@
 
 let
   # Define the Noctalia shell package
-  noctalia-shell = pkgs.stdenv.mkDerivation {
-    pname = "noctalia-shell";
-    version = "latest";
+  # noctalia-shell = pkgs.stdenv.mkDerivation {
+  #   pname = "noctalia-shell";
+  #   version = "latest";
 
-    src = pkgs.fetchurl {
-      url = "https://github.com/noctalia-dev/noctalia-shell/releases/latest/download/noctalia-latest.tar.gz";
-      sha256 = "sha256-UagJGeyXRF0CNDqnd290IQ/Tdrac5qGwXma6jtcjZzM=";
-    };
+  #   src = pkgs.fetchurl {
+  #     url = "https://github.com/noctalia-dev/noctalia-shell/releases/latest/download/noctalia-latest.tar.gz";
+  #     sha256 = "sha256-2PCcRtTvkROn99SFLRe7Vz2HQacnMwj5U+Eu6dGF6sw=";
+  #   };
 
-    installPhase = ''
-      mkdir -p $out
-      cp -r * $out/
-    '';
+  #   installPhase = ''
+  #     mkdir -p $out
+  #     cp -r * $out/
+  #   '';
 
-  };
+  # };
 
   wallpaperRepo = pkgs.fetchFromGitHub {
     owner = "DenverCoder1";
@@ -26,10 +26,10 @@ let
   };
 in
 {
-  home.file.".config/quickshell" = {
-    source = noctalia-shell;
-    recursive = true;
-  };
+  # home.file.".config/quickshell" = {
+  #   source = noctalia-shell;
+  #   recursive = true;
+  # };
 
   home.activation.myScript = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     $DRY_RUN_CMD mkdir -p "$HOME/.config/noctalia/"

@@ -19,8 +19,6 @@
     ../modules/wm/stylix
   ];
 
-  programs.niri.enable = true;
-
   users.users.${conf.user} = {
     isNormalUser = true;
     description = "main user";
@@ -36,6 +34,7 @@
     "root"
     conf.user
   ];
+
   documentation.man.generateCaches = false;
 
   # Enable CUPS to print documents.
@@ -54,15 +53,21 @@
     fstrim.enable = true;
     openssh.enable = true;
     gvfs.enable = true;
-    udisks2.enable = true;
-    printing = {
-      enable = true;
-      drivers = [ pkgs.hplipWithPlugin ];
-    };
+    tumbler.enable = true;
+    # printing = {
+    #   enable = true;
+    #   drivers = [ pkgs.hplipWithPlugin ];
+    # };
     power-profiles-daemon.enable = true;
     thermald.enable = true;
     gnome.gnome-keyring.enable = true;
     gnome.gcr-ssh-agent.enable = true;
+  };
+
+  # services.desktopManager.cosmic.enable = true;
+  programs.niri = {
+    enable = true;
+    # package = pkgs.niri-unstable;
   };
 
   programs = {
@@ -84,8 +89,30 @@
       plugins = with pkgs.xfce; [
         thunar-archive-plugin
         thunar-volman
-        thunar-media-tags-plugin
       ];
+    };
+    xfconf.enable = true;
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
     };
   };
   nix.settings.experimental-features = [
@@ -93,10 +120,13 @@
     "flakes"
   ];
   environment.systemPackages = with pkgs; [
+    # xfce.thunar-archive-plugin
+    # xfce.thunar-volman
+    file-roller
 
     inputs.quickshell.packages.${system}.default
     inputs.matugen.packages.${system}.default
-    # Flakes clones its dependencies through the git command,
+    inputs.noctalia.packages.${system}.default # Flakes clones its dependencies through the git command,
     # so git must be installed first
     vim
     curl
@@ -189,13 +219,12 @@
     # Fun and customization
     fastfetch
     microfetch
+    onefetch
 
     # Networking
-    networkmanagerapplet
     dig
     distrobox
     gpsd
-    niri
 
     gparted
   ];
