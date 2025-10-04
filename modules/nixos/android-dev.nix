@@ -9,14 +9,14 @@ let
         "27.2.12479018" # LTS NDK
       ];
       cmake = "3.31.6";
-      emulator = "33.1.10";
+      emulator = "33.1.20";
     };
     platforms = [
       "30"
     ];
     abis = [
-      "armeabi-v7a"
       "arm64-v8a"
+      "armeabi-v7a"
     ];
     extras = [ "extras;google;gcm" ];
   };
@@ -51,25 +51,23 @@ let
     ];
   };
 
-  emulator = pkgs.androidenv.emulateApp {
-    name = "emulate-MyAndroidApp";
-    platformVersion = "30";
-    abiVersion = "x86_64"; # mips, x86 or x86_64
-    systemImageType = "google_apis_playstore";
-  };
+  # emulator = pkgs.androidenv.emulateApp {
+  #   name = "emulate-MyAndroidApp";
+  #   platformVersion = "30";
+  #   abiVersion = "x86_64"; # mips, x86 or x86_64
+  #   systemImageType = "google_apis_playstore";
+  # };
 
-  jdk = pkgs.jdk;
+  jdk = pkgs.jdk17;
 in
 {
   environment.systemPackages = [
     androidComposition.androidsdk
-    androidComposition.platform-tools
-    emulator
+    # androidComposition.platform-tools
+    # emulator
     jdk
     pkgs.gradle
   ];
-
-  nixpkgs.config.android_sdk.accept_license = true;
 
   environment.variables = rec {
     ANDROID_SDK_ROOT = "${androidComposition.androidsdk}/libexec/android-sdk";

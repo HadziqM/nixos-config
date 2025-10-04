@@ -90,7 +90,10 @@
       ];
       pkgs = import nixpkgs {
         inherit system overlays;
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+          android_sdk.accept_license = true;
+        };
       };
 
       mkHomeManager =
