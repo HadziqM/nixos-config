@@ -49,6 +49,7 @@
     cron = {
       enable = true;
     };
+    upower.enable = true;
     libinput.enable = true;
     fstrim.enable = true;
     openssh.enable = true;
@@ -58,12 +59,14 @@
     #   enable = true;
     #   drivers = [ pkgs.hplipWithPlugin ];
     # };
-    power-profiles-daemon.enable = true;
+    # power-profiles-daemon.enable = true;
+    auto-cpufreq.enable = true;
     thermald.enable = true;
     gnome.gnome-keyring.enable = true;
     gnome.gcr-ssh-agent.enable = true;
   };
 
+  powerManagement.powertop.enable = true;
   # services.desktopManager.cosmic.enable = true;
   programs.niri = {
     enable = true;
@@ -123,6 +126,7 @@
     # xfce.thunar-archive-plugin
     # xfce.thunar-volman
     file-roller
+    powertop
 
     inputs.quickshell.packages.${system}.default
     inputs.matugen.packages.${system}.default

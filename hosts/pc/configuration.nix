@@ -5,6 +5,5 @@
     ../../modules/nixos/binary-cache.nix
     ../../modules/nixos/android-dev.nix
   ];
-
   networking.hostName = "hadziq-pc";
 }
