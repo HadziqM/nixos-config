@@ -99,7 +99,7 @@
       mkHomeManager =
         modules:
         home-manager.lib.homeManagerConfiguration {
-          inherit system pkgs modules;
+          inherit pkgs modules;
           specialArgs = { inherit inputs conf; };
         };
 
