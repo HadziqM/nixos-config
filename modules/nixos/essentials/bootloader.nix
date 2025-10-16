@@ -23,12 +23,11 @@
       systemd-boot.enable = false;
 
       grub = {
-        enable = true; # This is missing
+        enable = true;
         efiSupport = true;
-        #efiInstallAsRemovable = true; # Uncomment if needed
-        device = "nodev"; # EFI systems don't use a physical device
-        inherit (conf) useOSProber; # Detects other OSes like Windows
-        configurationLimit = 10; # Keep only 5 boot generations
+        device = "nodev";
+        inherit (conf) useOSProber;
+        configurationLimit = 10;
       };
     };
   };
