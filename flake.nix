@@ -100,7 +100,7 @@
         modules:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs modules;
-          specialArgs = { inherit inputs conf; };
+          extraSpecialArgs = { inherit inputs conf; };
         };
 
       mkNixosSystem =

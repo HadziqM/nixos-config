@@ -46,6 +46,8 @@
     atuin.enable = false;
   };
 
+  stylix.targets.helix.enable = false;
+
   # services.wlsunset = {
   #   enable = true;
   #   latitude = -7.056651;

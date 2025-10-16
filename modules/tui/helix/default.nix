@@ -22,7 +22,6 @@ let
   };
 in
 {
-  stylix.targets.helix.enable = false;
   home.packages = with pkgs; [
     svelte-language-server
     typescript-language-server
