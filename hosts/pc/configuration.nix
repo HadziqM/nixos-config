@@ -13,8 +13,8 @@
   services.auto-cpufreq.enable = lib.mkForce false;
   powerManagement.powertop.enable = lib.mkForce false;
 
-  environment.systemPackages = with pkgs; [
-    android-studio
-    flutter
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   android-studio
+  #   flutter
+  # ];
 }

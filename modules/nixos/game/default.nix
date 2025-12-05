@@ -28,7 +28,7 @@
       ffmpeg-full
       libva # hardware accleration library for gamemode
       libva-utils
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
 
@@ -60,5 +60,8 @@
     winetricks
     lutris
     mangohud
+
+    # flashplayer
+    ruffle
   ];
 }

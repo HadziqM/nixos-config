@@ -6,7 +6,7 @@
 
 {
 
-  stylix.targets.spicetify.enable = false;
+  # stylix.targets.spicetify.enable = false;
 
   programs.spicetify =
     let

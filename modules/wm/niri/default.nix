@@ -44,8 +44,8 @@
       pamixer
     ];
   };
-  stylix.targets.mako.enable = false;
-  services.swww.enable = true;
+  # stylix.targets.mako.enable = false;
+  # services.swww.enable = true;
   # services.mako = {
   #   enable = true;
   #   settings = {

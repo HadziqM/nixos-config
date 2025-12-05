@@ -36,10 +36,13 @@
       eval "$(zoxide init zsh)"
       eval "$(starship init zsh)"
 
+      nix-clean-gcroot() {        
+        rm /nix/var/nix/gcroots/auto/*
+      }
+
       nix-cleanup() {
-        sudo rm /nix/var/nix/gcroots/auto/*
-        sudo nix-collect-garbage -d
-        sudo nix-store --optimise
+        nix-collect-garbage -d
+        nix-store --optimise
       }
     '';
   };

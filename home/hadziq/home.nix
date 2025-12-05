@@ -12,12 +12,12 @@
     ../../dotfiles
 
     ../../modules/wm/niri
-    ../../modules/wm/eww
+    # ../../modules/wm/eww
     ../../modules/wm/quickshell
 
     ../../modules/gui/zen-browser
     ../../modules/gui/vesktop
-    ../../modules/gui/spotify
+    # ../../modules/gui/spotify
     ../../modules/gui/apps
 
     ../../modules/tui/cli-tools
@@ -28,7 +28,7 @@
     ../../modules/tui/git
     ../../modules/tui/atuin
     ../../modules/tui/nushell
-    ../../modules/tui/helix
+    # ../../modules/tui/helix
   ];
 
   cli-tools.setting = {
@@ -46,7 +46,7 @@
     atuin.enable = false;
   };
 
-  stylix.targets.helix.enable = false;
+  # stylix.targets.helix.enable = false;
 
   # services.wlsunset = {
   #   enable = true;

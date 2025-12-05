@@ -40,8 +40,12 @@ in
         write-to-disk = true;
       };
       "Mod+V".action = toggle-overview;
-      "Mod+Shift+Alt+S".action = screenshot-window;
-      "Mod+Shift+S".action = screenshot;
+      # "Mod+Shift+Alt+S".action.screenshot-window = {
+      #   write-to-disk = true;
+      # };
+      "Mod+Shift+S".action.screenshot-window = {
+        write-to-disk = true;
+      };
       "Mod+Return".action = spawn "kitty";
       "Alt+Z".action = zellij;
       "Alt+B".action = spawn "zen";

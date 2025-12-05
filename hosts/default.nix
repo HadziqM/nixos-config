@@ -4,6 +4,9 @@
   inputs,
   ...
 }:
+let
+  hx = pkgs.callPackage ../modules/wrapper/helix { };
+in
 {
 
   imports = [
@@ -16,7 +19,7 @@
     # ../modules/nixos/rust.nix
     # ../modules/wm/gnome
     ../modules/wm/sddm
-    ../modules/wm/stylix
+    # ../modules/wm/stylix
   ];
 
   users.users.${conf.user} = {
@@ -27,7 +30,7 @@
       "wheel"
       "dialout"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   nix.settings.trusted-users = [
@@ -76,7 +79,6 @@
   programs = {
     nix-ld = {
       enable = true;
-      package = pkgs.nix-ld-rs;
     };
     firefox.enable = false;
     dconf.enable = true;
@@ -135,6 +137,7 @@
     vim
     curl
     nano
+    hx
 
     nodejs
     clang
@@ -233,7 +236,7 @@
     gparted
   ];
   # Set the default editor to vim
-  environment.variables.EDITOR = "vim";
+  environment.variables.EDITOR = "hx";
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

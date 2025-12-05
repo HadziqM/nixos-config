@@ -22,5 +22,8 @@
     droidcam
     obs-studio-plugins.droidcam-obs
 
+    qbittorrent-enhanced
+    notepad-next
+
   ];
 }
