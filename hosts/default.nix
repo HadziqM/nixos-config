@@ -186,6 +186,7 @@ in
     pulseaudio
     pavucontrol
     mpv
+    termusic
 
     # Image and graphics
     imagemagick
