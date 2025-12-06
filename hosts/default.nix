@@ -6,6 +6,7 @@
 }:
 let
   hx = pkgs.callPackage ../modules/wrapper/helix { };
+  ft = pkgs.callPackage ../modules/wrapper/foot { };
 in
 {
 
@@ -19,7 +20,7 @@ in
     # ../modules/nixos/rust.nix
     # ../modules/wm/gnome
     ../modules/wm/sddm
-    # ../modules/wm/stylix
+    ../modules/wm/stylix
   ];
 
   users.users.${conf.user} = {
@@ -69,7 +70,14 @@ in
     gnome.gcr-ssh-agent.enable = true;
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 60;
+  };
+
   powerManagement.powertop.enable = true;
+
   # services.desktopManager.cosmic.enable = true;
   programs.niri = {
     enable = true;
@@ -160,6 +168,7 @@ in
     wget
     killall
     kitty
+    ft
     fzf
     tmux
     progress
@@ -235,6 +244,7 @@ in
     gpsd
 
     gparted
+    gdu
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "hx";

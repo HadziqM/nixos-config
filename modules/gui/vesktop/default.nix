@@ -1,6 +1,6 @@
 {
-  # stylix.targets.vencord.enable = false;
-  # stylix.targets.vesktop.enable = false;
+  stylix.targets.vencord.enable = false;
+  stylix.targets.vesktop.enable = false;
 
   programs.vesktop = {
     enable = true;
