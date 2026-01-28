@@ -12,8 +12,9 @@ in
   programs.niri.settings.binds =
     with config.lib.niri.actions;
     let
-      zellij = spawn "kitty" "-e" "zellij";
-      yazi = spawn "kitty" "-e" "yazi";
+      zellij = spawn "foot" "zellij";
+      yazi = spawn "foot" "yazi";
+      music = spawn "foot" "termusic";
       set-volume = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@";
       playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
       wallPicker = spawn "${wall}/bin/wall";
@@ -43,14 +44,14 @@ in
       # "Mod+Shift+Alt+S".action.screenshot-window = {
       #   write-to-disk = true;
       # };
-      "Mod+Shift+S".action.screenshot-window = {
-        write-to-disk = true;
+      "Mod+Shift+S".action.screenshot = {
+        show-pointer = true;
       };
-      "Mod+Return".action = spawn "kitty";
+      "Mod+Return".action = spawn "foot";
       "Alt+Z".action = zellij;
       "Alt+B".action = spawn "zen";
       "Alt+D".action = spawn "vesktop";
-      "Alt+M".action = spawn "spotify";
+      "Alt+M".action = music;
       "Alt+L".action = spawn "lutris";
       "Alt+Y".action = yazi;
       "Mod+G".action = maximize-column;

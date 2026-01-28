@@ -5,6 +5,6 @@ symlinkJoin {
   paths = [ pkgs.foot ];
   postBuild = ''
     wrapProgram $out/bin/foot \
-    --append-flags "-c ${./config.ini}"
+    --add-flags "-c ${./config.ini}"
   '';
 }

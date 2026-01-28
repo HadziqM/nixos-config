@@ -7,6 +7,7 @@
 let
   hx = pkgs.callPackage ../modules/wrapper/helix { };
   ft = pkgs.callPackage ../modules/wrapper/foot { };
+  music = pkgs.callPackage ../modules/wrapper/music { };
 in
 {
 
@@ -133,8 +134,6 @@ in
     "flakes"
   ];
   environment.systemPackages = with pkgs; [
-    # xfce.thunar-archive-plugin
-    # xfce.thunar-volman
     file-roller
     powertop
 
@@ -195,7 +194,7 @@ in
     pulseaudio
     pavucontrol
     mpv
-    termusic
+    music
 
     # Image and graphics
     imagemagick

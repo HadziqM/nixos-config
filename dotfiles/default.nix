@@ -8,16 +8,16 @@
       # Config directories
       # ".config/staship.toml".source = ../dotfiles/.config/starship.toml;
       ".config/fastfetch".source = ./.config/fastfetch;
-      ".config/kitty".source = ../dotfiles/.config/kitty;
+      # ".config/kitty".source = ../dotfiles/.config/kitty;
       ".config/tmux/tmux.conf".source = ./.config/tmux/tmux.conf;
-      ".config/yazi".source = ./.config/yazi;
+      # ".config/yazi".source = ./.config/yazi;
     };
 
   };
 
   home.packages = with pkgs; [
-    bat
-    eza
+    # bat
+    # eza
     yazi
     tmux
     # zsh
