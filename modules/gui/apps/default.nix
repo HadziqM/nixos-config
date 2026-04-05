@@ -25,5 +25,6 @@
     qbittorrent-enhanced
     notepad-next
 
+    fritzing
   ];
 }

@@ -21,7 +21,7 @@ in
       # Essential tools (always included when enable = true)
       [
         # System info
-        neofetch
+        fastfetch
         microfetch
         # File management
         yazi

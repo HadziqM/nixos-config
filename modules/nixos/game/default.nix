@@ -55,7 +55,7 @@
 
   environment.systemPackages = with pkgs; [
     # the nixos-unstable gamescope is broken rn, use chaotic nyx repo
-    gamescope_git
+    gamescope
     wineWowPackages.stable
     winetricks
     lutris

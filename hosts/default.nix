@@ -100,11 +100,12 @@ in
     };
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
+      plugins = with pkgs; [
         thunar-archive-plugin
         thunar-volman
       ];
     };
+    kdeconnect.enable = true;
     xfconf.enable = true;
   };
 
@@ -244,6 +245,7 @@ in
 
     gparted
     gdu
+    gnome-software
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "hx";
