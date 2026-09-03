@@ -54,11 +54,13 @@ in
       "Alt+M".action = music;
       "Alt+L".action = spawn "lutris";
       "Alt+Y".action = yazi;
+      "Alt+T".action = spawn "quickshell" "-c" "QuickSnip" "-n";
       "Mod+G".action = maximize-column;
       "Alt+Space".action = spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
-      "Mod+Alt+W".action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle";
+      "Mod+Alt+W".action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
       "Ctrl+Alt+L".action = spawn "hyprlock";
-      "Mod+Alt+Q".action = spawn "wlogout";
+      # "Mod+Alt+Q".action = spawn "wlogout";
+      "Mod+Alt+Q".action = spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle";
       "Mod+E".action = wallPicker;
       # "Mod+W".action = wbar;
       "Mod+Q".action = close-window;

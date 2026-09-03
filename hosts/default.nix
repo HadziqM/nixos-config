@@ -90,6 +90,7 @@ in
       enable = true;
     };
     firefox.enable = false;
+    firejail.enable = true;
     dconf.enable = true;
     fuse.userAllowOther = true;
     zsh.enable = true;

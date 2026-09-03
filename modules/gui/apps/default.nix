@@ -26,5 +26,6 @@
     notepad-next
 
     fritzing
+    zed-editor-fhs
   ];
 }

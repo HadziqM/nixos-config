@@ -108,6 +108,7 @@
     packages = with pkgs; [
       xclip
       lazygit
+      # inputs.focal.packages.${pkgs.system}.default
       # my NixVim configuration
       # inputs.Akari.packages.${system}.default
     ];

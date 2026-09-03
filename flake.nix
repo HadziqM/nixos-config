@@ -1,19 +1,22 @@
 {
   description = "A simple NixOS flake";
 
-  # nixConfig = {
-  #   substituters = [
-  #     # tailscale ip build machine pc
-  #     "http://192.168.1.14:5000"
-  #     "https://nix-community.cachix.org"
-  #     "https://cache.nixos.org/"
-  #   ];
-  #   trusted-public-keys = [
-  #     "binarycache.example.com:DGyPKTV70YTe4OBNTEhO8puBf6jNGuswWXD1SerbMY4="
-  #     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  #     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  #   ];
-  # };
+  nixConfig = {
+    substituters = [
+      # "http://192.168.1.14:5000"
+      "https://nix-community.cachix.org"
+      "https://cache.nixos.org/"
+      "https://noctalia.cachix.org"
+      "https://focal.cachix.org"
+    ];
+    trusted-public-keys = [
+      # "binarycache.example.com:DGyPKTV70YTe4OBNTEhO8puBf6jNGuswWXD1SerbMY4="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "focal.cachix.org-1:/YkOWkXNH2uK7TnskrVMvda8LyCe4iIbMM1sZN2AOXY="
+    ];
+  };
 
   inputs = {
     # NixOS official package source, using the nixos-24.11 branch here
@@ -26,12 +29,14 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    jovian.follows = "chaotic/jovian";
+    # jovian.follows = "chaotic/jovian";
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     flake-utils.url = "github:numtide/flake-utils";
 
     stylix.url = "github:danth/stylix";
+
+    # focal.url = "github:iynaix/focal";
 
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -60,7 +65,7 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matugen = {
@@ -76,7 +81,7 @@
       stylix,
       rust-overlay,
       chaotic,
-      jovian,
+      # jovian,
       distro-grub-themes,
       ...
     }@inputs:
@@ -110,7 +115,7 @@
           modules = [
             configPath
             chaotic.nixosModules.default
-            jovian.nixosModules.default
+            # jovian.nixosModules.default
             stylix.nixosModules.stylix
             distro-grub-themes.nixosModules.${system}.default
             home-manager.nixosModules.home-manager

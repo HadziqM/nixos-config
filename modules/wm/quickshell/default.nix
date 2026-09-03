@@ -24,10 +24,26 @@ let
     rev = "main";
     sha256 = "sha256-x0Ho/KUbQBvpEsxNpNSS2t/tWbZHlA9tQQO24B9Wqfc=";
   };
+
+  # quicksnip = pkgs.stdenv.mkDerivation {
+  #   pname = "quicksnip";
+  #   version = "v2.0.0";
+
+  #   src = pkgs.fetchurl {
+  #     url = "https://github.com/Ronin-CK/QuickSnip/archive/refs/tags/v2.0.0.tar.gz";
+  #     sha256 = "sha256-3a1bA1op6deK7MTVmpG4aSP9IEyo6hBmc7q3qeVxlm8=";
+  #   };
+
+  #   installPhase = ''
+  #     mkdir -p $out
+  #     cp -r * $out/
+  #   '';
+
+  # };
 in
 {
   # home.file.".config/quickshell" = {
-  #   source = noctalia-shell;
+  #   source = quicksnip;
   #   recursive = true;
   # };
 
