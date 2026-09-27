@@ -1,18 +1,12 @@
 let
-  currentUser = builtins.getEnv "USER";
-  user = if currentUser == "root" || currentUser == "" then "hadziq" else currentUser;
-  efiSysMountPoint =
-    if builtins.pathExists /boot/EFI then
-      "/boot"
-    else if builtins.pathExists /boot/efi/EFI then
-      "/boot/efi"
-    else
-      null;
+  hostName = builtins.getEnv "HOST";
 in
 {
-  inherit efiSysMountPoint user;
+  user = "hadziq";
+
+  efiSysMountPoint = if hostName == "hadziq-laptop" then "/boot" else "/boot/efi";
+
   useOSProber = false;
-  # efiSysMountPoint = "/boot/efi";
   github = {
     email = "dimascrazz@gmail.com";
     username = "HadziqM";

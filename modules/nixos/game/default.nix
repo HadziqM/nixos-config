@@ -4,11 +4,6 @@
 }:
 {
 
-  # jovian.steam = {
-  #   enable = true;
-  #   desktopSession = "niri";
-  # };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -58,7 +53,6 @@
     gamescope
     wineWowPackages.stable
     winetricks
-    lutris
     mangohud
 
     # flashplayer

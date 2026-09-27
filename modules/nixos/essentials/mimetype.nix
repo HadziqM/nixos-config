@@ -14,13 +14,13 @@
     "application/xhtml+xml" = "zen.desktop";
 
     # File management
-    "inode/directory" = "org.kde.dolphin.desktop";
+    "inode/directory" = "thunar.desktop";
 
     # Text editor
-    "text/plain" = "nvim.desktop";
+    "text/plain" = "hx.desktop";
 
     # Terminal
-    "x-scheme-handler/terminal" = "kitty.desktop";
+    "x-scheme-handler/terminal" = "wezterm.desktop";
 
     # Videos
     "video/quicktime" = "mpv-2.desktop";
@@ -33,9 +33,11 @@
     "application/vnd.ms-excel" = "libreoffice-calc.desktop";
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "libreoffice-calc.desktop";
     "application/msword" = "libreoffice-writer.desktop";
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "libreoffice-writer.desktop";
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
+      "libreoffice-writer.desktop";
     "application/vnd.ms-powerpoint" = "libreoffice-impress.desktop";
-    "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "libreoffice-impress.desktop";
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation" =
+      "libreoffice-impress.desktop";
 
     # PDF
     "application/pdf" = "zen.desktop";

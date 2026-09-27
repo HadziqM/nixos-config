@@ -1,0 +1,171 @@
+[bar.default]
+background_opacity = 0.54999998770654202
+center = [ "group:g4", "clock", "group:g6", "bar_3" ]
+contact_shadow = true
+end = [ "group:g2", "group:g3", "group:g1" ]
+start = [ "launcher", "wallpaper", "workspaces", "group:g5" ]
+thickness = 38
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "battery", "control-center", "session" ]
+    opacity = 0.40000000596046448
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "bar", "bar_2", "network" ]
+    opacity = 0.40000000596046448
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g3"
+    members = [ "tray", "notifications", "clipboard", "bluetooth", "volume", "brightness" ]
+    opacity = 0.40000000596046448
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g4"
+    members = [ "status", "notes" ]
+    opacity = 0.40000000596046448
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g5"
+    members = [ "temp", "sysmon", "ram" ]
+    opacity = 0.40000000596046448
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g6"
+    members = [ "media", "audio_visualizer" ]
+    opacity = 0.40000000596046448
+    padding = 6.0
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    name = "herz"
+    type = "google"
+
+[config]
+
+[dock]
+position = "left"
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-2" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-A-2"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugins]
+enabled = [ "rylos/tailnet", "icefish/phone-operate", "noctalia/notes", "riversyx/noctaproton-vpn", "icefish/phone-connect" ]
+
+[shell]
+font_family = "DejaVu Sans Mono"
+settings_window_translucent = true
+
+[templates]
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Jiva Paper"
+custom_palette = "alejagalesa-purple-bear-fth"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "cava", "foot", "gtk3", "gtk4", "helix", "niri", "starship", "wezterm" ]
+    community_ids = [ "zen-browser", "discord", "fastfetch", "zellij", "lazygit", "yazi" ]
+
+[wallpaper]
+directory = "/home/hadziq/Pictures/wallpapers/"
+
+    [wallpaper.default]
+    path = "/home/hadziq/Pictures/wallpapers/baajjii-vector-desert.jpg"
+
+    [wallpaper.last]
+    path = "/home/hadziq/Pictures/wallpapers/baajjii-vector-desert.jpg"
+
+    [wallpaper.monitors.HDMI-A-2]
+    path = "/home/hadziq/Pictures/wallpapers/baajjii-vector-desert.jpg"
+
+[widget.bar]
+show_ip = true
+type = "rylos/tailnet:bar"
+
+[widget.bar_2]
+type = "riversyx/noctaproton-vpn:bar"
+
+[widget.bar_3]
+type = "icefish/phone-connect:bar"
+
+[widget.notes]
+type = "noctalia/notes:notes"
+
+[widget.status]
+type = "icefish/phone-operate:status"
+
+[widget.sysmon]
+stat = "disk_used_pct"

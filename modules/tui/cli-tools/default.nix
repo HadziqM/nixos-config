@@ -16,15 +16,13 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages =
+    packages =
       with pkgs;
       # Essential tools (always included when enable = true)
       [
         # System info
         fastfetch
         microfetch
-        # File management
-        yazi
         # Archives
         zip
         xz
@@ -40,6 +38,7 @@ in
         zoxide
         gawk
         zstd
+        zellij
 
       ]
       # Monitoring tools
@@ -78,13 +77,5 @@ in
         gpu-screen-recorder
         cava
       ];
-
-    programs.zellij = {
-      enable = true;
-      settings = {
-        show_startup_tips = false;
-      };
-    };
-
   };
 }

@@ -3,7 +3,7 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
+  packages = with pkgs; [
     python3 # arduino-ide prequisite
 
     pavucontrol # PulseAudio volume control GUI
@@ -27,5 +27,6 @@
 
     fritzing
     zed-editor-fhs
+    vesktop
   ];
 }

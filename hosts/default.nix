@@ -5,11 +5,15 @@
   ...
 }:
 let
-  hx = pkgs.callPackage ../modules/wrapper/helix { };
+  # hx = pkgs.callPackage ../modules/wrapper/helix { };
   ft = pkgs.callPackage ../modules/wrapper/foot { };
   music = pkgs.callPackage ../modules/wrapper/music { };
   game = pkgs.callPackage ../modules/wrapper/game { };
   ocr-region = pkgs.callPackage ../modules/wrapper/scripts/ocr { };
+  ouch-fetch = pkgs.callPackage ../derivation/fetch/ouch.nix { };
+  cheat-engine = pkgs.callPackage ../derivation/fetch/cheat-engine.nix { };
+  system = pkgs.stdenv.hostPlatform.system;
+
 in
 {
 
@@ -20,10 +24,7 @@ in
     ../modules/nixos/game
     ../modules/nixos/podman.nix
     ../modules/nixos/flatpak.nix
-    # ../modules/nixos/rust.nix
-    # ../modules/wm/gnome
     ../modules/wm/sddm
-    ../modules/wm/stylix
   ];
 
   users.users.${conf.user} = {
@@ -42,7 +43,7 @@ in
     conf.user
   ];
 
-  documentation.man.generateCaches = false;
+  # documentation.man.generateCaches = false;
 
   # Enable CUPS to print documents.
   services = {
@@ -84,10 +85,15 @@ in
   # services.desktopManager.cosmic.enable = true;
   programs.niri = {
     enable = true;
-    # package = pkgs.niri-unstable;
   };
 
   programs = {
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/${conf.user}/nixos-config";
+    };
     nix-ld = {
       enable = true;
     };
@@ -141,14 +147,15 @@ in
     file-roller
     powertop
 
-    inputs.quickshell.packages.${system}.default
-    inputs.matugen.packages.${system}.default
+    # inputs.quickshell.packages.${system}.default
+    # inputs.matugen.packages.${system}.default
     inputs.noctalia.packages.${system}.default # Flakes clones its dependencies through the git command,
+    inputs.zen-browser.packages.${system}.default
     # so git must be installed first
     vim
     curl
     nano
-    hx
+    # hx
 
     nodejs
     clang
@@ -158,6 +165,7 @@ in
     gnumake
 
     bibata-cursors
+    lyra-cursors
 
     openssl
 
@@ -170,7 +178,6 @@ in
     stow
     wget
     killall
-    kitty
     ft
     fzf
     tmux
@@ -252,9 +259,16 @@ in
 
     game
     ocr-region
+    wezterm
+    ouch-fetch
+    cheat-engine
   ];
   # Set the default editor to vim
-  environment.variables.EDITOR = "hx";
+  environment.variables = {
+    EDITOR = "hx";
+    TERMINAL = "wezterm";
+    BROWSER = "zen";
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
