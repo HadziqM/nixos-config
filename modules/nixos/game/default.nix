@@ -4,11 +4,6 @@
 }:
 {
 
-  # jovian.steam = {
-  #   enable = true;
-  #   desktopSession = "niri";
-  # };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -28,7 +23,7 @@
       ffmpeg-full
       libva # hardware accleration library for gamemode
       libva-utils
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
     ];
 
@@ -55,10 +50,12 @@
 
   environment.systemPackages = with pkgs; [
     # the nixos-unstable gamescope is broken rn, use chaotic nyx repo
-    gamescope_git
+    gamescope
     wineWowPackages.stable
     winetricks
-    lutris
     mangohud
+
+    # flashplayer
+    ruffle
   ];
 }

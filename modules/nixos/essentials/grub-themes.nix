@@ -1,11 +1,12 @@
 {
   lib,
   inputs,
+  pkgs,
   ...
 }:
 let
-  system = "x86_64-linux";
   grub-theme = "apple-grub-theme";
+  system = pkgs.stdenv.hostPlatform.system;
 in
 {
   boot.loader.grub = {

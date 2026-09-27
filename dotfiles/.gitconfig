@@ -1,7 +1,0 @@
-[init]
-	defaultBranch = main
-[user]
-	email = dimascrazz@gmail.com
-	name = hadziqM
-[pull]
-	rebase = true

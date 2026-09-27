@@ -4,6 +4,17 @@
   inputs,
   ...
 }:
+let
+  # hx = pkgs.callPackage ../modules/wrapper/helix { };
+  ft = pkgs.callPackage ../modules/wrapper/foot { };
+  music = pkgs.callPackage ../modules/wrapper/music { };
+  game = pkgs.callPackage ../modules/wrapper/game { };
+  ocr-region = pkgs.callPackage ../modules/wrapper/scripts/ocr { };
+  ouch-fetch = pkgs.callPackage ../derivation/fetch/ouch.nix { };
+  cheat-engine = pkgs.callPackage ../derivation/fetch/cheat-engine.nix { };
+  system = pkgs.stdenv.hostPlatform.system;
+
+in
 {
 
   imports = [
@@ -13,10 +24,7 @@
     ../modules/nixos/game
     ../modules/nixos/podman.nix
     ../modules/nixos/flatpak.nix
-    # ../modules/nixos/rust.nix
-    # ../modules/wm/gnome
     ../modules/wm/sddm
-    ../modules/wm/stylix
   ];
 
   users.users.${conf.user} = {
@@ -27,7 +35,7 @@
       "wheel"
       "dialout"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   nix.settings.trusted-users = [
@@ -35,7 +43,7 @@
     conf.user
   ];
 
-  documentation.man.generateCaches = false;
+  # documentation.man.generateCaches = false;
 
   # Enable CUPS to print documents.
   services = {
@@ -66,19 +74,31 @@
     gnome.gcr-ssh-agent.enable = true;
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 60;
+  };
+
   powerManagement.powertop.enable = true;
+
   # services.desktopManager.cosmic.enable = true;
   programs.niri = {
     enable = true;
-    # package = pkgs.niri-unstable;
   };
 
   programs = {
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/${conf.user}/nixos-config";
+    };
     nix-ld = {
       enable = true;
-      package = pkgs.nix-ld-rs;
     };
     firefox.enable = false;
+    firejail.enable = true;
     dconf.enable = true;
     fuse.userAllowOther = true;
     zsh.enable = true;
@@ -89,11 +109,12 @@
     };
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
+      plugins = with pkgs; [
         thunar-archive-plugin
         thunar-volman
       ];
     };
+    kdeconnect.enable = true;
     xfconf.enable = true;
   };
 
@@ -123,18 +144,18 @@
     "flakes"
   ];
   environment.systemPackages = with pkgs; [
-    # xfce.thunar-archive-plugin
-    # xfce.thunar-volman
     file-roller
     powertop
 
-    inputs.quickshell.packages.${system}.default
-    inputs.matugen.packages.${system}.default
+    # inputs.quickshell.packages.${system}.default
+    # inputs.matugen.packages.${system}.default
     inputs.noctalia.packages.${system}.default # Flakes clones its dependencies through the git command,
+    inputs.zen-browser.packages.${system}.default
     # so git must be installed first
     vim
     curl
     nano
+    # hx
 
     nodejs
     clang
@@ -144,6 +165,7 @@
     gnumake
 
     bibata-cursors
+    lyra-cursors
 
     openssl
 
@@ -156,7 +178,7 @@
     stow
     wget
     killall
-    kitty
+    ft
     fzf
     tmux
     progress
@@ -183,6 +205,7 @@
     pulseaudio
     pavucontrol
     mpv
+    music
 
     # Image and graphics
     imagemagick
@@ -231,9 +254,21 @@
     gpsd
 
     gparted
+    gdu
+    gnome-software
+
+    game
+    ocr-region
+    wezterm
+    ouch-fetch
+    cheat-engine
   ];
   # Set the default editor to vim
-  environment.variables.EDITOR = "vim";
+  environment.variables = {
+    EDITOR = "hx";
+    TERMINAL = "wezterm";
+    BROWSER = "zen";
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

@@ -1,100 +1,79 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
+
 let
-  hx-lsp = pkgs.rustPlatform.buildRustPackage {
-    pname = "hx-lsp";
-    version = "0.2.11";
+  tomlFormat = pkgs.formats.toml { };
 
-    src = pkgs.fetchFromGitHub {
-      owner = "erasin";
-      repo = "hx-lsp";
-      rev = "0.2.11";
-      sha256 = "sha256-wTilbEK3BZehklAd+3SS2tW/vc8WEeMPUsYdDVRC/Ho=";
-    };
-
-    cargoHash = "sha256-dcGInrfWftClvzrxYZvrazm+IWWRfOZmxDJPKwu7GwM=";
-
-    meta = with pkgs.lib; {
-      description = "lsp for helix , support snippets, actions";
-      homepage = "https://github.com/erasin/hx-lsp";
-      license = licenses.mit;
-      maintainers = [ ];
-    };
-  };
+  # Server list for Nix language support
+  nixLanguageServers = [
+    "statix"
+    "nixd"
+  ];
 in
 {
-  home.packages = with pkgs; [
-    svelte-language-server
-    typescript-language-server
-    vscode-langservers-extracted
+  # 1. Install Helix and language server packages
+  packages = with pkgs; [
+    helix
+    nixfmt
+    statix
+    nixd
+    hx-lsp
   ];
-  home.file = {
-    ".config/helix/snippets".source = ../../../asset/snippet;
 
-    ".ignore".text = ''
-      # Version control directories
-      .git/
-      .svn/
-      .hg/
-      .bzr/
+  files.".config/helix/config.toml" = {
+    generator = tomlFormat.generate "helix-config.toml";
+    value = {
+      theme = "noctalia";
 
-      # Build directories
-      target/
-      build/
-      dist/
-      out/
-
-      # Dependencies
-      node_modules/
-      .pnpm-store/
-      .yarn/
-      vendor/
-
-      .direnv/
-    '';
-  };
-  programs.helix = {
-    enable = true;
-    settings = {
-      theme = "mocha_transparent";
       editor = {
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+
         file-picker = {
           hidden = false;
           ignore = true;
         };
-        cursor-shape = {
-          normal = "block";
-          insert = "bar";
-          select = "underline";
-        };
       };
     };
-    languages = {
+  };
+
+  # 3. Languages Configuration (~/.config/helix/languages.toml)
+
+  files.".config/helix/themes/mocha_transparent.toml" = {
+    generator = tomlFormat.generate "mocha.toml";
+    value = {
+      inherits = "catppuccin_mocha";
+      ui.background = { };
+    };
+  };
+
+  files.".config/helix/languages.toml" = {
+    generator = tomlFormat.generate "helix-languages.toml";
+    value = {
       language = [
         {
           name = "nix";
           auto-format = true;
-          formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-          language-servers = [
-            "nixd"
-            "statix"
-          ];
-        }
-        {
-          name = "sql";
-          language-servers = [ "sqls" ];
-        }
-        {
-          name = "rust";
+          language-servers = nixLanguageServers;
           formatter = {
-            command = "rustfmt";
+            command = lib.getExe pkgs.nixfmt;
           };
         }
         {
-          name = "svelte";
+          name = "rust";
           language-servers = [
-            "svelteserver"
-            "tailwind"
+            "rust-analyzer"
+            "hx-lsp"
           ];
+          formatter = {
+            command = "rustfmt";
+          };
         }
         {
           name = "dart";
@@ -104,31 +83,47 @@ in
           ];
         }
       ];
+
       language-server = {
-        hx-lsp.command = "${hx-lsp}/bin/hx-lsp";
-        sqls = {
-          command = "${pkgs.sqlint}/bin/sqlint";
-        };
         statix = {
-          command = "${pkgs.statix}/bin/statix";
+          command = lib.getExe pkgs.statix;
         };
-        nixd = {
-          command = "${pkgs.nixd}/bin/nixd";
-        };
-        tailwind = {
-          command = "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
-          args = [ "--stdio" ];
-        };
+
         rust-analyzer = {
-          config.check.command = "clippy";
+          config = {
+            check = {
+              command = "clippy";
+            };
+          };
         };
-      };
-    };
-    themes = {
-      mocha_transparent = {
-        "inherits" = "catppuccin_mocha";
-        "ui.background" = { };
+
+        nixd = {
+          command = lib.getExe pkgs.nixd;
+        };
+        hx-lsp = {
+          command = lib.getExe pkgs.hx-lsp;
+        };
       };
     };
   };
+
+  # 4. Global Ignore Rules (~/.config/helix/ignore)
+  files.".config/helix/ignore".text = ''
+    .git/
+    .svn/
+    .hg/
+    .bzr/
+
+    target/
+    build/
+    dist/
+    out/
+
+    node_modules/
+    .pnpm-store/
+    .yarn/
+    vendor/
+
+    .direnv/
+  '';
 }

@@ -3,7 +3,7 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
+  packages = with pkgs; [
     python3 # arduino-ide prequisite
 
     pavucontrol # PulseAudio volume control GUI
@@ -22,5 +22,11 @@
     droidcam
     obs-studio-plugins.droidcam-obs
 
+    qbittorrent-enhanced
+    notepad-next
+
+    fritzing
+    zed-editor-fhs
+    vesktop
   ];
 }
