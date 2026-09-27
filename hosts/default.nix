@@ -8,6 +8,8 @@ let
   hx = pkgs.callPackage ../modules/wrapper/helix { };
   ft = pkgs.callPackage ../modules/wrapper/foot { };
   music = pkgs.callPackage ../modules/wrapper/music { };
+  game = pkgs.callPackage ../modules/wrapper/game { };
+  ocr-region = pkgs.callPackage ../modules/wrapper/scripts/ocr { };
 in
 {
 
@@ -247,6 +249,9 @@ in
     gparted
     gdu
     gnome-software
+
+    game
+    ocr-region
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "hx";

@@ -36,15 +36,10 @@
 
     stylix.url = "github:danth/stylix";
 
-    # focal.url = "github:iynaix/focal";
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # My Neovim config, now i use helix
-    # Akari.url = "github:HadziqM/Akari";
 
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
 
@@ -60,7 +55,6 @@
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -68,6 +62,7 @@
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     matugen = {
       url = "github:/InioX/Matugen";
     };

@@ -54,7 +54,7 @@ in
       "Alt+M".action = music;
       "Alt+L".action = spawn "lutris";
       "Alt+Y".action = yazi;
-      "Alt+T".action = spawn "quickshell" "-c" "QuickSnip" "-n";
+      "Alt+T".action = spawn "ocr-region";
       "Mod+G".action = maximize-column;
       "Alt+Space".action = spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
       "Mod+Alt+W".action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
