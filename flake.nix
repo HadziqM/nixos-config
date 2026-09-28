@@ -19,7 +19,6 @@
   };
 
   inputs = {
-    # NixOS official package source, using the nixos-24.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hjem = {
@@ -31,14 +30,10 @@
       url = "github:oxalica/rust-overlay";
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
 
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -55,7 +50,6 @@
     {
       nixpkgs,
       rust-overlay,
-      distro-grub-themes,
       hjem,
       ...
     }@inputs:
@@ -82,7 +76,6 @@
           specialArgs = { inherit inputs conf; };
           modules = [
             configPath
-            distro-grub-themes.nixosModules.${system}.default
             hjem.nixosModules.default
             {
               hjem = {
