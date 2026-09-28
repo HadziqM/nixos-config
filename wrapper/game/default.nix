@@ -1,6 +1,6 @@
 { pkgs, writeScriptBin, ... }:
 let
-  jadeite = pkgs.callPackage ./jadeite.nix { };
+  jadeite = pkgs.callPackage ../../derivation/fetch/jadeite.nix { };
 
   proton = pkgs.proton-ge-bin.steamcompattool;
 

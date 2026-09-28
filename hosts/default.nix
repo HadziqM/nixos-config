@@ -6,11 +6,10 @@
 }:
 let
   # hx = pkgs.callPackage ../modules/wrapper/helix { };
-  ft = pkgs.callPackage ../modules/wrapper/foot { };
-  music = pkgs.callPackage ../modules/wrapper/music { };
-  game = pkgs.callPackage ../modules/wrapper/game { };
-  ocr-region = pkgs.callPackage ../modules/wrapper/scripts/ocr { };
-  ouch-fetch = pkgs.callPackage ../derivation/fetch/ouch.nix { };
+  ft = pkgs.callPackage ../wrapper/foot { };
+  music = pkgs.callPackage ../wrapper/music { };
+  game = pkgs.callPackage ../wrapper/game { };
+  ocr-region = pkgs.callPackage ../wrapper/scripts/ocr { };
   cheat-engine = pkgs.callPackage ../derivation/fetch/cheat-engine.nix { };
   system = pkgs.stdenv.hostPlatform.system;
 
@@ -260,7 +259,6 @@ in
     game
     ocr-region
     wezterm
-    ouch-fetch
     cheat-engine
   ];
   # Set the default editor to vim

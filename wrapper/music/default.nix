@@ -5,7 +5,7 @@
   writeShellApplication,
 }:
 let
-  yt = callPackage ./yt-dlp.nix { };
+  yt = callPackage ../../derivation/fetch/yt-dlp.nix { };
 
   # download music from youtube in link
   downloads-yt = writeShellApplication {

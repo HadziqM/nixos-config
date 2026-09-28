@@ -5,11 +5,11 @@
 
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "yt-dlp";
-  version = "2026.06.09";
+  version = "2026.08.19";
 
   src = fetchurl {
     url = "https://github.com/yt-dlp/yt-dlp/releases/download/${version}/yt-dlp_linux";
-    hash = "sha256-wrAYn1gf5KLd1BlU8by30yfbBLB+0N6pfk8bPgm13Y4=";
+    hash = "sha256-WBYvm/3CdFjqR7/LMRz0cCjxfYFUqL99aJhh1GOZIwo=";
   };
   phases = [ "installPhase" ];
 
