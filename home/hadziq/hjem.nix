@@ -28,7 +28,8 @@
 
   xdg.mime-apps = {
     default-applications = {
-      "inode/directory" = "thunar.desktop";
+      "inode/directory" = "yazi-term.desktop";
+      "text/plain" = "hx.desktop";
       "application/x-directory" = "thunar.desktop";
     };
   };

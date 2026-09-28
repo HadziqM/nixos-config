@@ -19,6 +19,7 @@ in
     brightnessctl
     libnotify
     pantheon.pantheon-agent-polkit
+    xwayland-satellite
     lazygit
     direnv
     nix-direnv

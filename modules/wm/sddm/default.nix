@@ -1,31 +1,43 @@
 { pkgs, ... }:
+
 let
-  background-package = pkgs.stdenvNoCC.mkDerivation {
-    name = "background-image";
-    src = ../../../asset/neon.jpg;
-    dontUnpack = true;
+  nier-automata-sddm = pkgs.stdenvNoCC.mkDerivation {
+    pname = "sddm-theme-nier-automata";
+    version = "1.0";
+
+    src = ../../../asset/themes-nier-automata;
+
+    dontBuild = true;
+
     installPhase = ''
-      cp $src $out
+      runHook preInstall
+
+      mkdir -p $out/share/sddm/themes/nier-automata
+      cp -r ./* $out/share/sddm/themes/nier-automata/
+
+      runHook postInstall
     '';
-  };
-  astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "cyberpunk";
-    themeConfig = {
-      Background = "${background-package}";
-    };
   };
 in
 {
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "sddm-astronaut-theme";
+
+    theme = "nier-automata";
+
     package = pkgs.kdePackages.sddm;
-    extraPackages = [ astronaut ];
+
+    extraPackages = [
+      nier-automata-sddm
+      pkgs.kdePackages.qt5compat
+      pkgs.kdePackages.qtmultimedia
+      pkgs.kdePackages.qtsvg
+    ];
   };
 
   environment.systemPackages = [
-    astronaut
+    nier-automata-sddm
     pkgs.kdePackages.qtmultimedia
   ];
 }

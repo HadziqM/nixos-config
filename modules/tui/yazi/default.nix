@@ -70,6 +70,17 @@ in
     yz
   ];
 
+  files.".local/share/applications/yazi-term.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=Yazi (Terminal File Manager)
+    Exec=${pkgs.wezterm}/bin/wezterm start -- ${yz}/bin/yazi %u
+    Icon=utilities-terminal
+    Terminal=false
+    Categories=System;FileTools;FileManager;
+    MimeType=inode/directory;
+  '';
+
   files.".config/yazi/yazi.toml" = {
     generator = (pkgs.formats.toml { }).generate "yazi.toml";
     value = {

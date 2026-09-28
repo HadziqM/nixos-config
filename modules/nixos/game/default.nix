@@ -41,15 +41,17 @@
   };
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin.steamcompattool
+    ];
   };
 
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # the nixos-unstable gamescope is broken rn, use chaotic nyx repo
     gamescope
     wineWowPackages.stable
     winetricks
