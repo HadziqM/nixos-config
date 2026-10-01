@@ -24,6 +24,7 @@ in
     ../modules/nixos/podman.nix
     ../modules/nixos/flatpak.nix
     ../modules/wm/sddm
+    ../modules/nixos/qemu.nix
   ];
 
   users.users.${conf.user} = {
@@ -33,6 +34,9 @@ in
       "networkmanager"
       "wheel"
       "dialout"
+      "adbusers"
+      "libvirtd"
+      "kvm"
     ];
     shell = pkgs.zsh;
   };
@@ -81,11 +85,6 @@ in
 
   powerManagement.powertop.enable = true;
 
-  # services.desktopManager.cosmic.enable = true;
-  programs.niri = {
-    enable = true;
-  };
-
   programs = {
     nh = {
       enable = true;
@@ -93,6 +92,7 @@ in
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/home/${conf.user}/nixos-config";
     };
+    niri.enable = true;
     nix-ld = {
       enable = true;
     };
@@ -260,6 +260,12 @@ in
     ocr-region
     wezterm
     cheat-engine
+
+    # android
+    adb-sync
+    android-tools
+    scrcpy
+    sshfs
   ];
   # Set the default editor to vim
   environment.variables = {

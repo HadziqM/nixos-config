@@ -4,8 +4,8 @@ let
 
   proton = pkgs.proton-ge-bin.steamcompattool;
 
-  # Directly use nixpkgs' proton-ge-bin package path
   set-proton-path = ''
+    export XLOCALEDIR="${pkgs.libX11}/share/X11/locale"
     if [ "$WINEPREFIX" = "" ]; then WINEPREFIX=${prefix}; fi
     export WINEPREFIX
     echo "Initializing WINEPREFIX at: $WINEPREFIX"

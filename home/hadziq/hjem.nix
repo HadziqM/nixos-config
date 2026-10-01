@@ -30,7 +30,7 @@
     default-applications = {
       "inode/directory" = "yazi-term.desktop";
       "text/plain" = "hx.desktop";
-      "application/x-directory" = "thunar.desktop";
+      "application/x-directory" = "yazi-term.desktop";
     };
   };
   clobberFiles = true;

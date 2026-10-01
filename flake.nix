@@ -5,6 +5,7 @@
     substituters = [
       # "http://192.168.1.14:5000"
       "https://nix-community.cachix.org"
+      "https://attic.xuyh0120.win/lantian"
       "https://cache.nixos.org/"
       "https://noctalia.cachix.org"
       "https://focal.cachix.org"
@@ -12,6 +13,7 @@
     trusted-public-keys = [
       # "binarycache.example.com:DGyPKTV70YTe4OBNTEhO8puBf6jNGuswWXD1SerbMY4="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "focal.cachix.org-1:/YkOWkXNH2uK7TnskrVMvda8LyCe4iIbMM1sZN2AOXY="
@@ -25,6 +27,8 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -58,6 +62,7 @@
       overlays = [
         (import rust-overlay)
         inputs.niri.overlays.niri
+        inputs.nix-cachyos-kernel.overlays.pinned
       ];
       pkgs = import nixpkgs {
         inherit overlays;

@@ -10,57 +10,63 @@ let
     ];
     text = ''
       CWD=""
-            HOLD=false
+      HOLD=false
 
-            while [ $# -gt 0 ]; do
-              case "$1" in
-                --cwd)
-                  if [ $# -gt 1 ]; then
-                    CWD="$2"
-                    shift 2
-                  else
-                    shift 1
-                  fi
-                  ;;
-                --hold)
-                  HOLD=true
-                  shift 1
-                  ;;
-                *)
-                  break
-                  ;;
-              esac
-            done
-
-            TERM_BIN="''${TERMINAL:-wezterm}"
-
-            if [[ "$TERM_BIN" == *"foot"* ]]; then
-              ARGS=()
-              [ -n "$CWD" ] && ARGS+=("-D" "$CWD")
-              [ "$HOLD" = true ] && ARGS+=("-H")
-              if [ $# -gt 0 ]; then
-                exec foot "''${ARGS[@]}" "$@"
-              else
-                exec foot "''${ARGS[@]}"
-              fi
+      while [ $# -gt 0 ]; do
+        case "$1" in
+          --cwd)
+            if [ $# -gt 1 ]; then
+              CWD="$2"
+              shift 2
             else
-              ARGS=("start")
-              [ -n "$CWD" ] && ARGS+=("--cwd" "$CWD")
-              
-              if [ "$HOLD" = true ]; then
-                if [ $# -gt 0 ]; then
-                  exec wezterm "''${ARGS[@]}" -- sh -c '"$@"; echo "Press enter to exit..."; read' _ "$@"
-                else
-                  exec wezterm "''${ARGS[@]}"
-                fi
-              else
-                if [ $# -gt 0 ]; then
-                  exec wezterm "''${ARGS[@]}" -- "$@"
-                else
-                  exec wezterm "''${ARGS[@]}"
-                fi
-              fi
-            fi      
+              shift 1
+            fi
+            ;;
+          --hold)
+            HOLD=true
+            shift 1
+            ;;
+          *)
+            break
+            ;;
+        esac
+      done
+
+      # Fallback: If CWD was not passed via --cwd, use current working directory
+      if [ -z "$CWD" ]; then
+        CWD="$(pwd)"
+      fi
+
+      TERM_BIN="''${TERMINAL:-wezterm}"
+
+      if [[ "$TERM_BIN" == *"foot"* ]]; then
+        ARGS=()
+        [ -n "$CWD" ] && ARGS+=("-D" "$CWD")
+        [ "$HOLD" = true ] && ARGS+=("-H")
+        if [ $# -gt 0 ]; then
+          exec foot "''${ARGS[@]}" "$@"
+        else
+          exec foot "''${ARGS[@]}"
+        fi
+      else
+        ARGS=("start" "--cwd" "$CWD")
+
+        if [ "$HOLD" = true ]; then
+          if [ $# -gt 0 ]; then
+            # Fix sh -c expansion: pass exec "$@" so all arguments are preserved
+            exec wezterm "''${ARGS[@]}" -- sh -c 'exec "$@"; echo "Press enter to exit..."; read' _ "$@"
+          else
+            exec wezterm "''${ARGS[@]}"
+          fi
+        else
+          if [ $# -gt 0 ]; then
+            exec wezterm "''${ARGS[@]}" -- "$@"
+          else
+            exec wezterm "''${ARGS[@]}"
+          fi
+        fi
+      fi
+
     '';
   };
 in

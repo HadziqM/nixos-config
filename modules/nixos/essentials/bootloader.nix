@@ -5,14 +5,17 @@
 }:
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
     kernelParams = [
       "amd_pstate=active" # powerstate
       "processor.max_cstate=5" # limit power usage
       "nvme.noacpi=1" # NVME power management
-      "v4l2loopback" # virtual cam
     ];
-    extraModulePackages = [ pkgs.linuxKernel.packages.linux_zen.v4l2loopback ];
+    kernelModules = [ "v4l2loopback" ];
+
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1 card_label="Samsung Virtual Cam"
+    '';
     tmp.cleanOnBoot = true;
     loader = {
       efi = {

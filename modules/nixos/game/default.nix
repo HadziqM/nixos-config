@@ -44,13 +44,21 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin.steamcompattool
-    ];
+    # extraCompatPackages = with pkgs; [
+    #   proton-ge-bin.steamcompattool
+    # ];
   };
 
-  programs.gamemode.enable = true;
-
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
+    # Enables 32-bit libgamemode.so for 32-bit games & Wine prefixes
+    settings = {
+      general = {
+        renice = 10;
+      };
+    };
+  };
   environment.systemPackages = with pkgs; [
     gamescope
     wineWowPackages.stable
